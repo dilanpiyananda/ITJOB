@@ -1,0 +1,11 @@
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\ITDB.dll.config
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\ITDB.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\ITDB.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\EntityFramework.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\EntityFramework.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.csproj.CoreCompileInputs.cache
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.csproj.CopyComplete
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.pdb
