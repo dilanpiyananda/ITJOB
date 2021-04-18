@@ -24,7 +24,10 @@ namespace ITMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/NavBar/navigation.css"));
+                      "~/Content/NavBar/navigation.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/font-awesome.min.css"));
+
             //the following creates bundles in debug mode;
             BundleTable.EnableOptimizations = true;
         }
