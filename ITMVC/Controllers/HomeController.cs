@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
 
 namespace ITMVC.Controllers
 {
@@ -10,6 +12,7 @@ namespace ITMVC.Controllers
     {
         public ActionResult Index()
         {
+            string userUuid = HttpContext.User.Identity.GetUserId();
             return View();
         }
 

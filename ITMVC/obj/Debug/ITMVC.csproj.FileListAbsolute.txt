@@ -153,6 +153,7 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\roslyn\vbc.rsp
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\roslyn\VBCSCompiler.exe
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\Antlr3.Runtime.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\AutoMapper.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\EntityFramework.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\EntityFramework.SqlServer.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\Microsoft.AspNet.Identity.Core.dll
@@ -179,6 +180,7 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Web.WebPages.Deployment.dl
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Web.WebPages.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Web.WebPages.Razor.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\WebGrease.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\AutoMapper.xml
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\EntityFramework.xml
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\EntityFramework.SqlServer.xml
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Web.Helpers.xml

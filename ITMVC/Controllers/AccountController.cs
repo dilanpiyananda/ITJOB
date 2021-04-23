@@ -244,6 +244,7 @@ namespace ITMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
+
             if (!ModelState.IsValid)
             {
                 return View(model);
