@@ -210,3 +210,9 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\obj\Debug\ITMVC.csproj.CoreCompileInp
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\obj\Debug\ITMVC.csproj.CopyComplete
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\obj\Debug\ITMVC.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\obj\Debug\ITMVC.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\ITCOMMON.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\ITDB.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\ITCOMMON.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\ITCOMMON.dll.config
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\ITDB.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\ITDB.dll.config

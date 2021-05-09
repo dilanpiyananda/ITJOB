@@ -58,3 +58,6 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\obj\Debug\ITCOMMON.csproj.CoreComp
 C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\obj\Debug\ITCOMMON.csproj.CopyComplete
 C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\obj\Debug\ITCOMMON.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\obj\Debug\ITCOMMON.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\ITDB.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\ITDB.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\ITDB.dll.config

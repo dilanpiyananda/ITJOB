@@ -175,8 +175,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
+    <Compile Include="Areas\Company\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Visitor\Controllers\JobController.cs" />
     <Compile Include="Areas\Visitor\VisitorAreaRegistration.cs" />
+    <Compile Include="Base\SystemBaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -185,6 +187,7 @@
     </Compile>
     <Compile Include="Helper\UserHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ComapnyVM\CompanyViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,12 +242,17 @@
     <Content Include="Areas\Company\Views\web.config" />
     <Content Include="Areas\Company\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Company\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Company\Views\Company\Index.cshtml" />
+    <Content Include="Areas\Company\Views\Company\_MainCompany.cshtml" />
+    <Content Include="Areas\Company\Views\Company\_EmailHandle.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -365,17 +373,18 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_Links.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Company\Controllers\" />
     <Folder Include="Areas\Company\Models\" />
     <Folder Include="Areas\Visitor\Models\" />
     <Folder Include="Areas\Visitor\Views\Job\" />
     <Folder Include="Areas\Visitor\Views\Shared\" />
+    <Folder Include="Views\SystemBase\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

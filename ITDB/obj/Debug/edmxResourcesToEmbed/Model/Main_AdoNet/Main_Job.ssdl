@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="itjob_mainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="update_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_company_has_accept_email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_id" Type="int" Nullable="false" />
+    <Property Name="accept_email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="update_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_company_has_job">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="job_main_id" Type="int" Nullable="false" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="update_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_job_main">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="number_of_vacancy" Type="int" />
+    <Property Name="open_date" Type="datetime" Nullable="false" />
+    <Property Name="close_date" Type="datetime" Nullable="false" />
+    <Property Name="attach_picture_id" Type="int" />
+    <Property Name="job_type_id" Type="int" />
+    <Property Name="cv_accept_email_id" Type="int" Nullable="false" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_trust">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="bit" Nullable="false" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="50" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_user_company_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="company_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="company_logo_Id" Type="int" />
+    <Property Name="company_web_link" Type="nvarchar" MaxLength="150" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="trust_id" Type="int" Nullable="false" />
+    <Property Name="contact_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="itjob_mainModelStoreContainer">
+    <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_company_has_accept_email" EntityType="Self.tbl_company_has_accept_email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_company_has_job" EntityType="Self.tbl_company_has_job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_document" EntityType="Self.tbl_document" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_job_main" EntityType="Self.tbl_job_main" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_trust" EntityType="Self.tbl_trust" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user_company_details" EntityType="Self.tbl_user_company_details" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

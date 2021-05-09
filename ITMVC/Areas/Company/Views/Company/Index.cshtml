@@ -1,0 +1,25 @@
+﻿<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12 text-center mt-4 mb-3">
+            <h5> Change Company Details</h5>
+            <p> Noted This Fields Link your Post Job</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            @using (Ajax.BeginForm("CompanyMainDetials", "Company", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ComapnyMainDetailsDiv", InsertionMode = InsertionMode.Replace, }))
+            {
+                @Html.AntiForgeryToken()
+                <div id="ComapnyMainDetailsDiv">
+                    @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
+                </div>
+            }
+            </div>
+        <div class="col-sm-6">
+            @Html.Partial("_EmailHandle")
+        </div>
+    </div>
+</div>
+

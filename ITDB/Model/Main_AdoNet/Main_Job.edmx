@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="itjob_mainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_company_has_accept_email">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="accept_email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_company_has_job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="job_main_id" Type="int" Nullable="false" />
+          <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="path" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_job_main">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="number_of_vacancy" Type="int" />
+          <Property Name="open_date" Type="datetime" Nullable="false" />
+          <Property Name="close_date" Type="datetime" Nullable="false" />
+          <Property Name="attach_picture_id" Type="int" />
+          <Property Name="job_type_id" Type="int" />
+          <Property Name="cv_accept_email_id" Type="int" Nullable="false" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_trust">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="bit" Nullable="false" />
+          <Property Name="system_comment" Type="nvarchar" MaxLength="50" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_user_company_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="company_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="company_logo_Id" Type="int" />
+          <Property Name="company_web_link" Type="nvarchar" MaxLength="150" />
+          <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="added_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="trust_id" Type="int" Nullable="false" />
+          <Property Name="contact_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="itjob_mainModelStoreContainer">
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_company_has_accept_email" EntityType="Self.tbl_company_has_accept_email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_company_has_job" EntityType="Self.tbl_company_has_job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_document" EntityType="Self.tbl_document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_job_main" EntityType="Self.tbl_job_main" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_trust" EntityType="Self.tbl_trust" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_user_company_details" EntityType="Self.tbl_user_company_details" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="itjob_mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_company_has_accept_email">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="accept_email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_company_has_job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="job_main_id" Type="Int32" Nullable="false" />
+          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_job_main">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="number_of_vacancy" Type="Int32" />
+          <Property Name="open_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="close_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="attach_picture_id" Type="Int32" />
+          <Property Name="job_type_id" Type="Int32" />
+          <Property Name="cv_accept_email_id" Type="Int32" Nullable="false" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_trust">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="Boolean" Nullable="false" />
+          <Property Name="system_comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_user_company_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company_logo_Id" Type="Int32" />
+          <Property Name="company_web_link" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="trust_id" Type="Int32" Nullable="false" />
+          <Property Name="contact_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="itjob_mainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
+          <EntitySet Name="tbl_company_has_accept_email" EntityType="Self.tbl_company_has_accept_email" />
+          <EntitySet Name="tbl_company_has_job" EntityType="Self.tbl_company_has_job" />
+          <EntitySet Name="tbl_document" EntityType="Self.tbl_document" />
+          <EntitySet Name="tbl_job_main" EntityType="Self.tbl_job_main" />
+          <EntitySet Name="tbl_trust" EntityType="Self.tbl_trust" />
+          <EntitySet Name="tbl_user_company_details" EntityType="Self.tbl_user_company_details" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="itjob_mainModelStoreContainer" CdmEntityContainer="itjob_mainEntities">
+          <EntitySetMapping Name="tbl_category">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_category">
+              <MappingFragment StoreEntitySet="tbl_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_company_has_accept_email">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_accept_email">
+              <MappingFragment StoreEntitySet="tbl_company_has_accept_email">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="accept_email" ColumnName="accept_email" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_company_has_job">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_job">
+              <MappingFragment StoreEntitySet="tbl_company_has_job">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="job_main_id" ColumnName="job_main_id" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_document">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_document">
+              <MappingFragment StoreEntitySet="tbl_document">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_job_main">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_job_main">
+              <MappingFragment StoreEntitySet="tbl_job_main">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="number_of_vacancy" ColumnName="number_of_vacancy" />
+                <ScalarProperty Name="open_date" ColumnName="open_date" />
+                <ScalarProperty Name="close_date" ColumnName="close_date" />
+                <ScalarProperty Name="attach_picture_id" ColumnName="attach_picture_id" />
+                <ScalarProperty Name="job_type_id" ColumnName="job_type_id" />
+                <ScalarProperty Name="cv_accept_email_id" ColumnName="cv_accept_email_id" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_trust">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_trust">
+              <MappingFragment StoreEntitySet="tbl_trust">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user_company_details">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_user_company_details">
+              <MappingFragment StoreEntitySet="tbl_user_company_details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="company_logo_Id" ColumnName="company_logo_Id" />
+                <ScalarProperty Name="company_web_link" ColumnName="company_web_link" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="trust_id" ColumnName="trust_id" />
+                <ScalarProperty Name="contact_number" ColumnName="contact_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

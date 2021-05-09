@@ -9,3 +9,4 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.csproj.CoreCompileInput
 C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.csproj.CopyComplete
 C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.pdb
+C:\Users\mylap\source\repos\ITJOBWEB\ITDB\obj\Debug\ITDB.csprojAssemblyReference.cache

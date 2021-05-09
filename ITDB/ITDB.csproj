@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +54,124 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Domain\Company.cs" />
+    <Compile Include="Domain\Enum\TrustEnum.cs" />
+    <Compile Include="Domain\SystemData.cs" />
+    <Compile Include="Model\Login_AdoNet\AspNetRole.cs">
+      <DependentUpon>Login_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\AspNetUser.cs">
+      <DependentUpon>Login_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\AspNetUserClaim.cs">
+      <DependentUpon>Login_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\AspNetUserLogin.cs">
+      <DependentUpon>Login_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\C__MigrationHistory.cs">
+      <DependentUpon>Login_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\Login_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\Login_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Login_AdoNet\Login_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\Main_Job.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main_Job.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\Main_Job.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\Main_Job.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main_Job.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_category.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_company_has_accept_email.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_company_has_job.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_document.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_job_main.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_trust.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_user_company_details.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Class\CompanyDataRepository.cs" />
+    <Compile Include="Repository\Interface\ICompanyDataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\Main_AdoNet\Main_Job.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Main_Job.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model\Login_AdoNet\Login_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Login_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\Login_AdoNet\Login_Model.edmx.diagram">
+      <DependentUpon>Login_Model.edmx</DependentUpon>
+    </None>
+    <None Include="Model\Main_AdoNet\Main_Job.edmx.diagram">
+      <DependentUpon>Main_Job.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Login_AdoNet\Login_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Login_Model.edmx</DependentUpon>
+      <LastGenOutput>Login_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Login_AdoNet\Login_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Login_Model.edmx</DependentUpon>
+      <LastGenOutput>Login_Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Main_AdoNet\Main_Job.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Main_Job.edmx</DependentUpon>
+      <LastGenOutput>Main_Job.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Main_AdoNet\Main_Job.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Main_Job.edmx</DependentUpon>
+      <LastGenOutput>Main_Job.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\CompanyRelatedModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

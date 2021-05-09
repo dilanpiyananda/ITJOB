@@ -1,0 +1,41 @@
+﻿@using ITMVC.Models.ComapnyVM
+@model CompanyViewModel
+
+
+    @Html.TextBoxFor(m => m.Company.CompanyDetailsId)
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 p-2 rounded text-white mb-3" style="background-color:dodgerblue">
+                <h5><b> Main Company Details</b></h5>
+            </div>
+            <hr />
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Comapny Name</label>
+                    @Html.TextBoxFor(m => m.Company.CompanyName, new { @class = "form-control", @placeholder = "Company Name" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Contact No.</label>
+
+                    @Html.TextBoxFor(m => m.Company.ContactNo, new { @class = "form-control", @placeholder = "Contact No." })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Upload Company Logo</label>
+                    @Html.TextBoxFor(m => m.CompanyLogo, new { @class = "form-control", @placeholder = "Company Logo", @type = "file" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Company WebSite Link</label>
+                    @Html.TextBoxFor(m => m.Company.WebLink, new { @class = "form-control", @placeholder = "Web Link" })
+                </div>
+            </div>
+            <div class="col-sm-12 text-right">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
