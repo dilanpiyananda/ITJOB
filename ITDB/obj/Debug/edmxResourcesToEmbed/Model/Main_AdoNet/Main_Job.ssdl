@@ -53,6 +53,22 @@
     <Property Name="added_by" Type="nvarchar" MaxLength="128" />
     <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
     <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="ResolutionType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_globle_note">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="related_id" Type="bigint" Nullable="false" />
+    <Property Name="document_id" Type="bigint" Nullable="false" />
+    <Property Name="section_id" Type="int" Nullable="false" />
+    <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
+    <Property Name="added_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="is_Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_job_main">
     <Key>
@@ -110,6 +126,7 @@
     <EntitySet Name="tbl_company_has_accept_email" EntityType="Self.tbl_company_has_accept_email" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_company_has_job" EntityType="Self.tbl_company_has_job" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_document" EntityType="Self.tbl_document" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_globle_note" EntityType="Self.tbl_globle_note" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_job_main" EntityType="Self.tbl_job_main" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_trust" EntityType="Self.tbl_trust" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_user_company_details" EntityType="Self.tbl_user_company_details" Schema="dbo" store:Type="Tables" />

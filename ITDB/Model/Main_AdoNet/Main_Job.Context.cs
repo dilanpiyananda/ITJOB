@@ -32,5 +32,6 @@ namespace ITDB.Model.Main_AdoNet
         public virtual DbSet<tbl_job_main> tbl_job_main { get; set; }
         public virtual DbSet<tbl_trust> tbl_trust { get; set; }
         public virtual DbSet<tbl_user_company_details> tbl_user_company_details { get; set; }
+        public virtual DbSet<tbl_globle_note> tbl_globle_note { get; set; }
     }
 }

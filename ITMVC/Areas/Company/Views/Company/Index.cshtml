@@ -1,4 +1,7 @@
-﻿<div class="container">
+﻿@using ITMVC.Models.ComapnyVM
+
+@Html.Partial("_CompanyScript",new CompanyViewModel())
+<div class="container">
 
     <div class="row">
         <div class="col-sm-12 text-center mt-4 mb-3">
@@ -9,14 +12,16 @@
 
     <div class="row">
         <div class="col-sm-6">
-            @using (Ajax.BeginForm("CompanyMainDetials", "Company", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ComapnyMainDetailsDiv", InsertionMode = InsertionMode.Replace, }))
-            {
-                @Html.AntiForgeryToken()
-                <div id="ComapnyMainDetailsDiv">
-                    @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
-                </div>
-            }
+            @*@using (Html.BeginForm("CompanyMainDetials", "Company", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ComapnyMainDetailsDiv" }))
+        {
+            @Html.AntiForgeryToken()*@
+
+            <div id="ComapnyMainDetailsDiv">
+                @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
+
             </div>
+                @*}*@
+        </div>
         <div class="col-sm-6">
             @Html.Partial("_EmailHandle")
         </div>

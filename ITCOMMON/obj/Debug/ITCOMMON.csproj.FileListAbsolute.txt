@@ -61,3 +61,16 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\obj\Debug\ITCOMMON.pdb
 C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\ITDB.dll
 C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\ITDB.pdb
 C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\ITDB.dll.config
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\libglib-2.0-0.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\libgobject-2.0-0.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\libvips-42.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\NetVips.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Buffers.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Memory.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Numerics.Vectors.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\NetVips.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Buffers.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Memory.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Numerics.Vectors.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITCOMMON\bin\System.Runtime.CompilerServices.Unsafe.xml

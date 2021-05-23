@@ -8,7 +8,8 @@ namespace ITMVC.Models.ComapnyVM
 {
     public class CompanyViewModel
     {
-        public Company Company { get; set; }
-        public HttpPostedFile CompanyLogo { get; set; }
+        public CompanyDom Company { get; set; }
+        public HttpPostedFileBase CompanyLogo { get; set; }
+        public long companyId { get; set; }
     }
 }

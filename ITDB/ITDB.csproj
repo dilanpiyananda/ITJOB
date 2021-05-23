@@ -54,7 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Domain\Company.cs" />
+    <Compile Include="Domain\CompanyDom.cs" />
+    <Compile Include="Domain\Document\Document.cs" />
+    <Compile Include="Domain\Document\DocumentImageList.cs" />
+    <Compile Include="Domain\Document\GlobleNote.cs" />
+    <Compile Include="Domain\Enum\FileType.cs" />
+    <Compile Include="Domain\Enum\Section.cs" />
     <Compile Include="Domain\Enum\TrustEnum.cs" />
     <Compile Include="Domain\SystemData.cs" />
     <Compile Include="Model\Login_AdoNet\AspNetRole.cs">
@@ -114,6 +119,9 @@
     <Compile Include="Model\Main_AdoNet\tbl_document.cs">
       <DependentUpon>Main_Job.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_globle_note.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Main_AdoNet\tbl_job_main.cs">
       <DependentUpon>Main_Job.tt</DependentUpon>
     </Compile>
@@ -125,7 +133,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Class\CompanyDataRepository.cs" />
+    <Compile Include="Repository\Class\DocumentDbRepository.cs" />
+    <Compile Include="Repository\Class\DocumentRepository.cs" />
+    <Compile Include="Repository\Class\GlobleNoteRepository.cs" />
     <Compile Include="Repository\Interface\ICompanyDataRepository.cs" />
+    <Compile Include="Repository\Interface\IDocumentDbRepository.cs" />
+    <Compile Include="Repository\Interface\IDocumentRepository.cs" />
+    <Compile Include="Repository\Interface\IGlobleNoteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

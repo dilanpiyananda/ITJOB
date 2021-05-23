@@ -1,0 +1,67 @@
+﻿@using ITMVC.Models.ComapnyVM
+@model CompanyViewModel
+
+<script>
+    function savedata() {
+        $(".loadersdiv").css("display", "block");
+        var object = createObject();
+        var url = "http://localhost:52410" + '@Url.Action("CompanyMainDetialsSave", "Company", new { area = "Company" })';
+
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: { 'model': object },
+
+        }).done(function (result) {
+            $(".loadersdiv").css("display", "none");
+            swal("Success !", "You clicked the button!", "success");
+            $("#ComapnyMainDetailsDiv").html(result);
+            });
+    }
+
+    function createObject() {
+
+        var obj = {
+            CompanyDetailsId: $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val(),
+            CompanyName: $("#" + '@Html.IdFor(m => m.Company.CompanyName)').val(),
+            ContactNo: $("#" + '@Html.IdFor(m => m.Company.ContactNo)').val(),
+            WebLink: $("#" + '@Html.IdFor(m => m.Company.WebLink)').val(),
+        };
+
+        var mainObj = {
+            Company: obj,
+        }
+
+        return mainObj;
+    }
+
+    function imageuploaded() {
+       
+        $(".loadersdiv").css("display", "block");
+        $("#companySavebtn").prop('disabled', true);
+        var url = "http://localhost:52410" + '@Url.Action("UploadImage", "Company", new { area = "Company" })';
+        var formdata = new FormData($("#formsub").get(0));
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            success: function (message) {
+                $("#companySavebtn").prop('disabled', false);
+                $(".loadersdiv").css("display", "none");
+                if (message.error != null) {
+                    swal(message.error, "You clicked the button!", "success");
+                } else {
+                    if (message.IsUse) {
+                        $('#Company_CompanyDetailsId').val(message.id);
+                    } 
+                }
+            },
+            error: function () {
+                alert("There was error uploading files!");
+            }
+        });
+
+    }
+</script>

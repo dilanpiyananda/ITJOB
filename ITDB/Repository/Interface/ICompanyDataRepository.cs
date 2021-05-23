@@ -12,10 +12,16 @@ namespace ITDB.Repository.Interface
         /// <summary>
         /// Get Comapny Details using userUuid
         /// </summary>
-        Company GetCompanyDetails(string userUuid);
+        CompanyDom GetCompanyDetails(string userUuid);
         /// <summary>
         /// Save Company Record and upload and save image
         /// </summary>
-        string Save(string userUuid, Company company, out int comapanyDetailsId);
+        string Save(string userUuid, CompanyDom company, out int comapanyDetailsId);
+
+        /// <summary>
+        /// Update Company Details
+        /// </summary>
+        /// <returns></returns>
+        string Update(string userUuid, CompanyDom company);
     }
 }

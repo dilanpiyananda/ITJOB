@@ -33,7 +33,7 @@
                     </li>
 
                 </ul>
-                
+
                 @if (Request.IsAuthenticated)
                 {
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -42,18 +42,18 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             @*<li>
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                            </li>*@
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>*@
                             <li><a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                         </ul>
                     }
                 }
                 else
                 {
-                        <a href="@Url.Action("Login","Account",new {area="" })" class="btn btn-primary">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login
-                        </a>
-                }    
+                    <a href="@Url.Action("Login","Account",new {area="" })" class="btn btn-primary">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login
+                    </a>
+                }
             </div>
         </div>
 
@@ -80,7 +80,8 @@
 
 
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @*@Scripts.Render("~/bundles/jquery")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

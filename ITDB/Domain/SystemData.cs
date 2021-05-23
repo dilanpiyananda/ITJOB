@@ -13,7 +13,7 @@ namespace ITDB.Domain
     {
         public string SystemComment { get; set; }
         public DateTime AddedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public string AddedBy { get; set; }
         public string UpdatedBy { get; set; }
         public bool IsActive { get; set; }

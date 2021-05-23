@@ -22,5 +22,6 @@ namespace ITDB.Model.Main_AdoNet
         public string added_by { get; set; }
         public string updated_by { get; set; }
         public bool is_active { get; set; }
+        public int ResolutionType { get; set; }
     }
 }
