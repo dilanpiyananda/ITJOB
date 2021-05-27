@@ -15,21 +15,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_company_has_accept_email">
-      <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_accept_email">
-        <MappingFragment StoreEntitySet="tbl_company_has_accept_email">
-          <ScalarProperty Name="is_active" ColumnName="is_active" />
-          <ScalarProperty Name="update_by" ColumnName="update_by" />
-          <ScalarProperty Name="added_by" ColumnName="added_by" />
-          <ScalarProperty Name="update_date" ColumnName="update_date" />
-          <ScalarProperty Name="added_date" ColumnName="added_date" />
-          <ScalarProperty Name="system_comment" ColumnName="system_comment" />
-          <ScalarProperty Name="accept_email" ColumnName="accept_email" />
-          <ScalarProperty Name="company_id" ColumnName="company_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_company_has_job">
       <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_job">
         <MappingFragment StoreEntitySet="tbl_company_has_job">
@@ -126,6 +111,21 @@
           <ScalarProperty Name="section_id" ColumnName="section_id" />
           <ScalarProperty Name="document_id" ColumnName="document_id" />
           <ScalarProperty Name="related_id" ColumnName="related_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_company_has_accept_email">
+      <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_accept_email">
+        <MappingFragment StoreEntitySet="tbl_company_has_accept_email">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="added_date" ColumnName="added_date" />
+          <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+          <ScalarProperty Name="accept_email" ColumnName="accept_email" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

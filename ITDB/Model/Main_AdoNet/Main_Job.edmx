@@ -22,8 +22,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_id" Type="bigint" Nullable="false" />
           <Property Name="accept_email" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
           <Property Name="added_date" Type="datetime" Nullable="false" />
@@ -142,13 +142,13 @@
       <Schema Namespace="itjob_mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="itjob_mainEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_category" EntityType="itjob_mainModel.tbl_category" />
-          <EntitySet Name="tbl_company_has_accept_email" EntityType="itjob_mainModel.tbl_company_has_accept_email" />
           <EntitySet Name="tbl_company_has_job" EntityType="itjob_mainModel.tbl_company_has_job" />
           <EntitySet Name="tbl_document" EntityType="itjob_mainModel.tbl_document" />
           <EntitySet Name="tbl_job_main" EntityType="itjob_mainModel.tbl_job_main" />
           <EntitySet Name="tbl_trust" EntityType="itjob_mainModel.tbl_trust" />
           <EntitySet Name="tbl_user_company_details" EntityType="itjob_mainModel.tbl_user_company_details" />
           <EntitySet Name="tbl_globle_note" EntityType="itjob_mainModel.tbl_globle_note" />
+          <EntitySet Name="tbl_company_has_accept_email" EntityType="itjob_mainModel.tbl_company_has_accept_email" />
         </EntityContainer>
         <EntityType Name="tbl_category">
           <Key>
@@ -162,20 +162,6 @@
           <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="is_active" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tbl_company_has_accept_email">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="company_id" Type="Int32" Nullable="false" />
-          <Property Name="accept_email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="is_active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_company_has_job">
           <Key>
@@ -271,6 +257,20 @@
           <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="is_Active" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_company_has_accept_email">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company_id" Type="Int64" Nullable="false" />
+          <Property Name="accept_email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -287,21 +287,6 @@
                 <ScalarProperty Name="added_date" ColumnName="added_date" />
                 <ScalarProperty Name="system_comment" ColumnName="system_comment" />
                 <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_company_has_accept_email">
-            <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_accept_email">
-              <MappingFragment StoreEntitySet="tbl_company_has_accept_email">
-                <ScalarProperty Name="is_active" ColumnName="is_active" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="added_date" ColumnName="added_date" />
-                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
-                <ScalarProperty Name="accept_email" ColumnName="accept_email" />
-                <ScalarProperty Name="company_id" ColumnName="company_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -402,6 +387,21 @@
                 <ScalarProperty Name="section_id" ColumnName="section_id" />
                 <ScalarProperty Name="document_id" ColumnName="document_id" />
                 <ScalarProperty Name="related_id" ColumnName="related_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_company_has_accept_email">
+            <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_accept_email">
+              <MappingFragment StoreEntitySet="tbl_company_has_accept_email">
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+                <ScalarProperty Name="accept_email" ColumnName="accept_email" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

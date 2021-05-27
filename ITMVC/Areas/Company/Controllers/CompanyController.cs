@@ -11,6 +11,8 @@ using ITMVC.Models.ComapnyVM;
 using ITDB.Domain.Enum;
 using ITDB.Domain;
 using ITMVC.Models;
+using ITMVC.Models.EmailVM;
+using AutoMapper;
 
 namespace ITMVC.Areas.Company.Controllers
 {
@@ -18,6 +20,7 @@ namespace ITMVC.Areas.Company.Controllers
     {
         private readonly IComapnyDataService _comapnyDetails = new ComapnyDataService();
         private readonly IDocumentService _documentService = new DocumentService();
+        private readonly IAcceptEmailService _emailService = new AcceptEmailService();
         // GET: Company/Company
         public ActionResult Index()
         {
@@ -100,6 +103,53 @@ namespace ITMVC.Areas.Company.Controllers
 
             modelcommon.error = _documentService.UploadImage(model.CompanyLogo, Section.company, HttpContext.User.Identity.GetUserId(),model.Company.CompanyDetailsId ==0? compnyDetailsId: model.Company.CompanyDetailsId);
             return Json(modelcommon);
+        }
+
+        public PartialViewResult EmailHandle()
+        {
+            long companyDetailsId = 0;
+            var company = _comapnyDetails.GetCompanyDetails(GetUserUuid());
+            if (company != null)
+                companyDetailsId = company.CompanyDetailsId;
+
+            var email = _emailService.GetEmail(companyDetailsId);
+            EmailHandleViewModel model = new EmailHandleViewModel()
+            {
+                Emails = Mapper.Map<List<EmailMM>>(email),
+            };
+
+            return PartialView("_EmailHandle",model);
+        }
+
+        [HttpPost]
+        public PartialViewResult EmailAddEditPopup(long emailId)
+        {
+
+            if(emailId > 0)
+            {
+                var model = Mapper.Map<EmailMM>(_emailService.GetSingleEmail(emailId));
+                return PartialView("_EmailAddEditPopup",model);
+            }
+            else
+            {
+                var company = _comapnyDetails.GetCompanyDetails(GetUserUuid());
+                var model = new EmailMM() {
+                    CompanyId=company.CompanyDetailsId
+                };
+                return PartialView("_EmailAddEditPopup", model);
+            }
+        }
+
+
+        public JsonResult SaveEmail(EmailMM email)
+        {
+            string error = null;
+            if (email.AcceptEmailId == 0)        
+                error = _emailService.SaveEmail(email, GetUserUuid(), out long emailIds);
+            else
+                error = _emailService.EditEmail(email,GetUserUuid());
+
+            return Json(true);
         }
     }
 }

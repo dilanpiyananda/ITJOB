@@ -229,3 +229,4 @@ C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Buffers.xml
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Memory.xml
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Numerics.Vectors.xml
 C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\mylap\source\repos\ITJOBWEB\ITMVC\bin\AutoMapper.pdb

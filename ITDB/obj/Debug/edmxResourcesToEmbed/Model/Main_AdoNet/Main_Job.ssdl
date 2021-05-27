@@ -17,8 +17,8 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="company_id" Type="int" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_id" Type="bigint" Nullable="false" />
     <Property Name="accept_email" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
     <Property Name="added_date" Type="datetime" Nullable="false" />

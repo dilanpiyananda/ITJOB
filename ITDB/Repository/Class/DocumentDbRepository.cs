@@ -3,9 +3,11 @@ using ITDB.Model.Main_AdoNet;
 using ITDB.Repository.Interface;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ITDB.Repository.Class
 {
@@ -59,6 +61,9 @@ namespace ITDB.Repository.Class
                 var found = db.tbl_document.Where(d => documentIds.Contains(d.id)).ToList();
                 if (found.Count() == 0)
                     return "Cant Delete not found Document";
+
+                DeleteServerDocumentFiles(found.Select(x=>x.path).ToArray());
+
                 db.tbl_document.RemoveRange(found);
                 try
                 {
@@ -72,6 +77,20 @@ namespace ITDB.Repository.Class
 
                 }
             }
+        }
+
+        private void DeleteServerDocumentFiles(string [] filenames)
+        {
+            foreach(var a in filenames)
+            {
+                string Directory = HttpContext.Current.Server.MapPath(a);
+                FileInfo fileInfo = new FileInfo(Directory);
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+            }
+            
         }
     }
 }

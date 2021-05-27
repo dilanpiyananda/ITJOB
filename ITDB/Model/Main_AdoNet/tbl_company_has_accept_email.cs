@@ -14,8 +14,8 @@ namespace ITDB.Model.Main_AdoNet
     
     public partial class tbl_company_has_accept_email
     {
-        public int id { get; set; }
-        public int company_id { get; set; }
+        public long id { get; set; }
+        public long company_id { get; set; }
         public string accept_email { get; set; }
         public string system_comment { get; set; }
         public System.DateTime added_date { get; set; }

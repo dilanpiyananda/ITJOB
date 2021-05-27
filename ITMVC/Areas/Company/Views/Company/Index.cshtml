@@ -1,6 +1,6 @@
 ﻿@using ITMVC.Models.ComapnyVM
 
-@Html.Partial("_CompanyScript",new CompanyViewModel())
+@Html.Partial("_CompanyScript", new CompanyViewModel())
 <div class="container">
 
     <div class="row">
@@ -13,17 +13,19 @@
     <div class="row">
         <div class="col-sm-6">
             @*@using (Html.BeginForm("CompanyMainDetials", "Company", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ComapnyMainDetailsDiv" }))
-        {
-            @Html.AntiForgeryToken()*@
+                {
+                    @Html.AntiForgeryToken()*@
 
             <div id="ComapnyMainDetailsDiv">
                 @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
 
             </div>
-                @*}*@
+            @*}*@
         </div>
         <div class="col-sm-6">
-            @Html.Partial("_EmailHandle")
+            <div id="emailtableDiv">
+                @Html.Action("EmailHandle", "Company", new { area = "Company" })
+            </div>
         </div>
     </div>
 </div>

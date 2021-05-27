@@ -1,35 +1,77 @@
-﻿<div class="container">
+﻿@using ITMVC.Models.EmailVM
+@model EmailHandleViewModel
+
+<div class="container">
     <div class="row">
         <div class="col-sm-12 p-2 rounded text-white mb-3" style="background-color:dodgerblue">
             <h5> Cv Accept Email Address</h5>
         </div>
         <hr />
-        @*<div class="col-sm-12 d-flex justify-content-center" style="margin:auto">
-            <div class="loader loadersdiv"></div>
-        </div>*@
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Comapny Name</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Company Name">
-            </div>
+
+        <div class="col-sm-12 text-right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" onclick="LoadPopup()" data-target="#exampleModal">Add New</button>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Contact No.</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Contact No.">
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Upload Company Logo</label>
-                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Company Logo">
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Company WebSite Link</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Web Link">
-            </div>
+        
+        <div class="col-sm-12">
+            @if (Model.Emails != null && Model.Emails.Count() > 0)
+            {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in Model.Emails)
+                    {
+                        <tr>
+                            <th scope="row">@a.AcceptEmailId</th>
+                            <td>@a.EmailAddress</td>
+                            <td>
+                                <div class="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-success" onclick="LoadEditPopup(@a.AcceptEmailId)">Edit</button>
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            }
+            else
+            {
+                <p>Email Not Available</p>
+            }
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="emailpopupmodelDIV">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="SaveEmail()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    
 </div>

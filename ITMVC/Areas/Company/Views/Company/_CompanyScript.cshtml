@@ -64,4 +64,100 @@
         });
 
     }
+
+    function LoadPopup() {
+        @*var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();*@
+        var url =  '@Url.Action("EmailAddEditPopup", "Company", new { area = "Company" })';
+
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: { 'emailId': 0 },
+
+        }).done(function (result) {
+            console.log(result);
+            //swal("Success !", "You clicked the button!", "success");
+            $("#emailpopupmodelDIV").html(result);
+            //$('#emailpopup').modal('Show');
+            });
+    }
+    function LoadEditPopup(emailid) {
+        alert(emailid);
+        @*var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();*@
+        var url =  '@Url.Action("EmailAddEditPopup", "Company", new { area = "Company" })';
+
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: { 'emailId': emailid },
+
+        }).done(function (result) {
+            console.log(result);
+            //swal("Success !", "You clicked the button!", "success");
+            $("#emailpopupmodelDIV").html(result);
+            $('#exampleModal').modal('show');
+            //$('#emailpopup').modal('Show');
+            });
+    }
+
+    function MakeEmailObject() {
+        var email = {
+            AcceptEmailId: $("#AcceptEmailId").val(),
+            CompanyId: $("#CompanyId").val(),
+            EmailAddress: $("#EmailAddress").val(),
+        }
+        return email;
+    }
+
+    function SaveEmail() {
+        var objectemail = MakeEmailObject();
+        var url =  '@Url.Action("SaveEmail", "Company", new { area = "Company" })';
+        var myobject = JSON.stringify({ email: objectemail });
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: myobject,
+            success: function (response) {
+                debugger;
+                $('#exampleModal').modal('hide');
+                //if (response) {
+                //    swal("Success !", "You clicked the button!", "success");
+                //} else {
+                //    swal(response, "You clicked the button!", "Error");
+                //}
+
+                LoadEmailPartial();
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function LoadEmailPartial() {
+        @*var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();*@
+        var url =  '@Url.Action("EmailHandle", "Company", new { area = "Company" })';
+
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: "",
+
+        }).done(function (result) {
+            //swal("Success !", "You clicked the button!", "success");
+            $("#emailtableDiv").html(result);
+           
+        });
+    }
+    function MakeEmailObject() {
+        var email = {
+            AcceptEmailId: $("#AcceptEmailId").val(),
+            CompanyId: $("#CompanyId").val(),
+            EmailAddress: $("#EmailAddress").val(),
+        }
+        return email;
+    }
 </script>
