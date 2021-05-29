@@ -151,5 +151,15 @@ namespace ITMVC.Areas.Company.Controllers
 
             return Json(true);
         }
+
+        public JsonResult DeleteEmail(long emailId)
+        {
+            string error = _emailService.DeleteEmail(emailId, GetUserUuid());
+
+            if (error == null)
+                return Json(true);
+            else
+                return Json(false);
+        }
     }
 }

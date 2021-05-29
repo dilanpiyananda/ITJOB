@@ -2,47 +2,54 @@
 @model EmailHandleViewModel
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12 p-2 rounded text-white mb-3" style="background-color:dodgerblue">
-            <h5> Cv Accept Email Address</h5>
+    <div class="row p-3 rounded mb-3 bk-color-white">
+        <div class="col-sm-12 ">
+            <img src="~/Image/comapnypage/email-image.jpg" class="common-image"/>
         </div>
-        <hr />
+        <div class="col-sm-12 mt-3 color-gray">
+            <h5><b> CV ACCEPT EMAIL ADDRESS</b></h5>
+            <hr />
+        </div>
 
-        <div class="col-sm-12 text-right">
-            <button type="button" class="btn btn-primary" data-toggle="modal" onclick="LoadPopup()" data-target="#exampleModal">Add New</button>
+        <div class="col-sm-12 d-flex justify-content-center"  style="margin:auto">
+            <div class="loader loadersdiv" id="emailLoader"></div>
         </div>
-        
+
+        <div class="col-sm-12 text-right mb-2">
+            <button type="button" class="btn btn-primary" data-toggle="modal" onclick="LoadPopup()" data-target="#exampleModal">ADD NEW</button>
+        </div>
+
         <div class="col-sm-12">
             @if (Model.Emails != null && Model.Emails.Count() > 0)
             {
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var a in Model.Emails)
-                    {
+                <table class="table">
+                    <thead>
                         <tr>
-                            <th scope="row">@a.AcceptEmailId</th>
-                            <td>@a.EmailAddress</td>
-                            <td>
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-success" onclick="LoadEditPopup(@a.AcceptEmailId)">Edit</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </div>
-                            </td>
+                            <th scope="col">Id</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Action</th>
 
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
+                        @foreach (var a in Model.Emails)
+                        {
+                            <tr>
+                                <th scope="row">@a.AcceptEmailId</th>
+                                <td>@a.EmailAddress</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <button type="button" class="btn btn-success" onclick="LoadEditPopup(@a.AcceptEmailId)">EDIT</button>
+                                        <button type="button" class="btn btn-danger" onclick="DeleteEmail(@a.AcceptEmailId)">DELETE</button>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
 
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
             }
             else
             {
@@ -57,7 +64,7 @@
     <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Email Handle</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -69,7 +76,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="SaveEmail()">Save changes</button>
+                    <button type="button" class="btn btn-primary"  onclick="SaveEmail()">Save changes</button>
                 </div>
             </div>
         </div>

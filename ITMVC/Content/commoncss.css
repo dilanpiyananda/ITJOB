@@ -1,0 +1,17 @@
+﻿body {
+}
+.bk-color-white {
+    background-color: white !important;
+}
+
+.bk-body-color {
+    background-color: #d3d3d38f;
+}
+.common-image{
+    object-fit:cover;
+    height:140px;
+    width:100%;
+}
+.color-gray{
+    color:darkgray;
+}

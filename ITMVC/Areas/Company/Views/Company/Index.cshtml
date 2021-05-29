@@ -1,31 +1,26 @@
 ﻿@using ITMVC.Models.ComapnyVM
 
 @Html.Partial("_CompanyScript", new CompanyViewModel())
-<div class="container">
+<div class="container" >
 
     <div class="row">
-        <div class="col-sm-12 text-center mt-4 mb-3">
-            <h5> Change Company Details</h5>
+        <div class="col-sm-12 text-center mt-4 mb-3 bk-color-white p-3 rounded color-gray" >
+            <h5><b> MANAGE COMPANY INFORMATIONS</b></h5>
             <p> Noted This Fields Link your Post Job</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
-            @*@using (Html.BeginForm("CompanyMainDetials", "Company", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ComapnyMainDetailsDiv" }))
-                {
-                    @Html.AntiForgeryToken()*@
-
             <div id="ComapnyMainDetailsDiv">
                 @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
-
             </div>
-            @*}*@
         </div>
         <div class="col-sm-6">
             <div id="emailtableDiv">
-                @Html.Action("EmailHandle", "Company", new { area = "Company" })
+
             </div>
+            @*@Html.Action("EmailHandle", "Company", new { area = "Company" })*@
         </div>
     </div>
 </div>

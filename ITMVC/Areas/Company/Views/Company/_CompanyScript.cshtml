@@ -3,7 +3,7 @@
 
 <script>
     function savedata() {
-        $(".loadersdiv").css("display", "block");
+        $("#mainCompanyLoader").css("display", "block");
         var object = createObject();
         var url = "http://localhost:52410" + '@Url.Action("CompanyMainDetialsSave", "Company", new { area = "Company" })';
 
@@ -13,7 +13,7 @@
             data: { 'model': object },
 
         }).done(function (result) {
-            $(".loadersdiv").css("display", "none");
+            $("#mainCompanyLoader").css("display", "none");
             swal("Success !", "You clicked the button!", "success");
             $("#ComapnyMainDetailsDiv").html(result);
             });
@@ -37,7 +37,7 @@
 
     function imageuploaded() {
        
-        $(".loadersdiv").css("display", "block");
+        $("#mainCompanyLoader").css("display", "block");
         $("#companySavebtn").prop('disabled', true);
         var url = "http://localhost:52410" + '@Url.Action("UploadImage", "Company", new { area = "Company" })';
         var formdata = new FormData($("#formsub").get(0));
@@ -49,7 +49,7 @@
             data: formdata,
             success: function (message) {
                 $("#companySavebtn").prop('disabled', false);
-                $(".loadersdiv").css("display", "none");
+                $("#mainCompanyLoader").css("display", "none");
                 if (message.error != null) {
                     swal(message.error, "You clicked the button!", "success");
                 } else {
@@ -110,6 +110,8 @@
     }
 
     function SaveEmail() {
+        debugger;
+        $("#emailLoader").css("display", "show");
         var objectemail = MakeEmailObject();
         var url =  '@Url.Action("SaveEmail", "Company", new { area = "Company" })';
         var myobject = JSON.stringify({ email: objectemail });
@@ -122,14 +124,16 @@
             data: myobject,
             success: function (response) {
                 debugger;
+                $("#emailLoader").css("display", "none");
                 $('#exampleModal').modal('hide');
-                //if (response) {
-                //    swal("Success !", "You clicked the button!", "success");
-                //} else {
-                //    swal(response, "You clicked the button!", "Error");
-                //}
+                if (response) {
+                    swal("Success !", "You clicked the button!", "success");
+                    LoadEmailPartial();
+                } else {
+                    swal(response, "You clicked the button!", "Error");
+                }
 
-                LoadEmailPartial();
+                
             },
             error: function (response) {
                 console.log(response);
@@ -137,21 +141,31 @@
         });
     }
 
-    function LoadEmailPartial() {
-        @*var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();*@
-        var url =  '@Url.Action("EmailHandle", "Company", new { area = "Company" })';
+    function ModelHide() {
+        $('#exampleModal').modal('hide');
+    }
 
+    function LoadEmailPartial() {
+        debugger;
+        var url = '@Url.Action("EmailHandle", "Company", new { area = "Company" })';
         $.ajax({
-            method: "POST",
+            type: "POST",
             url: url,
             data: "",
-
-        }).done(function (result) {
-            //swal("Success !", "You clicked the button!", "success");
-            $("#emailtableDiv").html(result);
-           
+            success: function (response) {
+                debugger;
+                $("#emailtableDiv").empty();
+                $("#emailtableDiv").append(response);
+                $(".modal-backdrop").css("display", "none");
+                //return true;
+            },
+            error: function (response) {
+                console.log(response);
+                //return false;
+            }
         });
     }
+            
     function MakeEmailObject() {
         var email = {
             AcceptEmailId: $("#AcceptEmailId").val(),
@@ -159,5 +173,39 @@
             EmailAddress: $("#EmailAddress").val(),
         }
         return email;
+    }
+
+    $(document).ready(function () {
+        LoadEmailPartial();
+    });
+
+    function DeleteEmail(emailId) {
+        debugger;
+        $("#emailLoader").css("display", "show");
+        var url = '@Url.Action("DeleteEmail", "Company", new { area = "Company" })';
+        var dataobj = JSON.stringify({ 'emailId': Number(emailId) });
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: dataobj,
+            success: function (response) {
+                debugger;
+                $("#emailLoader").css("display", "none");
+                if (response) {
+                    swal("Success !", "You clicked the button!", "success");
+                    LoadEmailPartial();
+                } else {
+                    swal(response, "You clicked the button!", "Error");
+                }
+
+                
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
     }
 </script>
