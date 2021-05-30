@@ -1,27 +1,37 @@
 ﻿@using ITMVC.Models.ComapnyVM
 
 @Html.Partial("_CompanyScript", new CompanyViewModel())
-<div class="container" >
+@Html.Action("JobScript", "Job",new {area="Company" })
 
-    <div class="row">
-        <div class="col-sm-12 text-center mt-4 mb-3 bk-color-white p-3 rounded color-gray" >
-            <h5><b> MANAGE COMPANY INFORMATIONS</b></h5>
-            <p> Noted This Fields Link your Post Job</p>
-        </div>
-    </div>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center mt-4 mb-3 bk-color-white p-3 rounded color-gray">
+                    <h5><b> MANAGE COMPANY INFORMATIONS</b></h5>
+                    <p> Noted This Fields Link your Post Job</p>
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div id="ComapnyMainDetailsDiv">
-                @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="ComapnyMainDetailsDiv">
+                        @Html.Action("CompanyMainDetials", "Company", new { area = "Company" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="emailtableDiv">
+
+                    </div>
+                    @*@Html.Action("EmailHandle", "Company", new { area = "Company" })*@
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div id="emailtableDiv">
+    </div>
+    <div class="tab-pane fade" id="tobjobs" role="tabpanel" aria-labelledby="profile-tab">
+        <div id="job-page">
 
-            </div>
-            @*@Html.Action("EmailHandle", "Company", new { area = "Company" })*@
         </div>
     </div>
+    <div class="tab-pane fade" id="mange-job" role="tabpanel" aria-labelledby="contact-tab">...</div>
 </div>
-

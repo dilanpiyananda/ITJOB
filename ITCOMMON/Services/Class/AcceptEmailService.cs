@@ -55,5 +55,14 @@ namespace ITCOMMON.Services.Class
         {
             return _emailRepo.DeleteEmail(emailId, userUuid);
         }
+        //-------------------------Drop Down---------------------------
+        /// <summary>
+        /// Get drop down
+        /// </summary>
+        /// <returns></returns>
+        public List<NewSelectList> DropDown(long CompanyId)
+        {
+            return _emailRepo.DropDown(CompanyId);
+        }
     }
 }

@@ -29,5 +29,6 @@ namespace ITDB.Model.Main_AdoNet
         public string updated_by { get; set; }
         public bool is_active { get; set; }
         public int category_id { get; set; }
+        public bool web_approval { get; set; }
     }
 }

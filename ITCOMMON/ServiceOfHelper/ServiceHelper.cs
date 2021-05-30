@@ -21,6 +21,14 @@ namespace ITCOMMON.ServiceOfHelper
 
                 return HttpContext.Current.Server.MapPath(rootpath);
             }
+            else if (section == Section.Job)
+            {
+                string rootpath = "~/Job/" + userId.ToString() + "/";
+                SubPath = ServiceHelper.subserverPath(userId, rootpath, out string virtualPath);
+                virtualpathname = virtualPath;
+
+                return HttpContext.Current.Server.MapPath(rootpath);
+            }
             else
             {
                 virtualpathname = null;
@@ -34,6 +42,12 @@ namespace ITCOMMON.ServiceOfHelper
             {
                 string date = (DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day).ToString();
                 string fileName = Section.company.ToString() + date + "#" + lastfileconcatstring.ToString();
+                return fileName;
+            }
+            else if (section == Section.Job)
+            {
+                string date = (DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day).ToString();
+                string fileName = Section.Job.ToString() + date + "#" + lastfileconcatstring.ToString();
                 return fileName;
             }
             else

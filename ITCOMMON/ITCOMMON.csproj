@@ -97,15 +97,21 @@
     <Compile Include="ServiceOfHelper\ImageHelper.cs" />
     <Compile Include="ServiceOfHelper\ServiceHelper.cs" />
     <Compile Include="Services\Class\AcceptEmailService.cs" />
+    <Compile Include="Services\Class\CategoryService.cs" />
     <Compile Include="Services\Class\ComapnyDataService.cs" />
+    <Compile Include="Services\Class\CompanyHasJobService.cs" />
     <Compile Include="Services\Class\DocumentService.cs" />
     <Compile Include="Services\Class\DocumentDbService.cs" />
     <Compile Include="Services\Class\GlobleNoteService.cs" />
+    <Compile Include="Services\Class\JobPostService.cs" />
     <Compile Include="Services\Interface\IAcceptEmailService.cs" />
+    <Compile Include="Services\Interface\ICategoryService.cs" />
     <Compile Include="Services\Interface\IComapnyDataService.cs" />
+    <Compile Include="Services\Interface\ICompanyHasJobService.cs" />
     <Compile Include="Services\Interface\IDocumentDbService.cs" />
     <Compile Include="Services\Interface\IDocumentService.cs" />
     <Compile Include="Services\Interface\IGlobleNoteService.cs" />
+    <Compile Include="Services\Interface\IJobPostService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

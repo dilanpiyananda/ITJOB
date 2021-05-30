@@ -66,8 +66,11 @@
     }
 
     function LoadPopup() {
-        @*var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();*@
-        var url =  '@Url.Action("EmailAddEditPopup", "Company", new { area = "Company" })';
+        var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();
+        if (companyDetailsId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url =  '@Url.Action("EmailAddEditPopup", "Company", new { area = "Company" })';
 
         $.ajax({
             method: "POST",
@@ -76,15 +79,18 @@
 
         }).done(function (result) {
             console.log(result);
-            //swal("Success !", "You clicked the button!", "success");
             $("#emailpopupmodelDIV").html(result);
-            //$('#emailpopup').modal('Show');
+            ModelShow()
             });
+        }
+        
     }
     function LoadEditPopup(emailid) {
-        alert(emailid);
-        @*var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();*@
-        var url =  '@Url.Action("EmailAddEditPopup", "Company", new { area = "Company" })';
+        var companyDetailsId = $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val();
+        if (companyDetailsId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url =  '@Url.Action("EmailAddEditPopup", "Company", new { area = "Company" })';
 
         $.ajax({
             method: "POST",
@@ -95,9 +101,11 @@
             console.log(result);
             //swal("Success !", "You clicked the button!", "success");
             $("#emailpopupmodelDIV").html(result);
-            $('#exampleModal').modal('show');
+            ModelShow();
             //$('#emailpopup').modal('Show');
             });
+        }
+        
     }
 
     function MakeEmailObject() {
@@ -145,6 +153,10 @@
         $('#exampleModal').modal('hide');
     }
 
+    function ModelShow() {
+        $('#exampleModal').modal('show');
+    }
+
     function LoadEmailPartial() {
         debugger;
         var url = '@Url.Action("EmailHandle", "Company", new { area = "Company" })';
@@ -178,7 +190,22 @@
     $(document).ready(function () {
         LoadEmailPartial();
     });
-
+    function warningbeforeDelete(emailId) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    DeleteEmail(emailId);
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+    }
     function DeleteEmail(emailId) {
         debugger;
         $("#emailLoader").css("display", "show");

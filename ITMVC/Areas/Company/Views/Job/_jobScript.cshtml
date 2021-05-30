@@ -1,0 +1,101 @@
+﻿<script>
+    function LoadJobPartial() {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("PostJob", "Job", new { area = "Company" })';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { 'comapnyDetailsId': companyId, 'JobId': 0 },
+            success: function (response) {
+                debugger;
+                $("#job-page").empty();
+                $("#job-page").append(response);
+                //$(".modal-backdrop").css("display", "none");
+                //return true;
+            },
+            error: function (response) {
+                console.log(response);
+                //return false;
+            }
+        });
+        }
+        
+    }
+    function LoadJobPartialSecond(jobId) {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("PostJob", "Job", new { area = "Company" })';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { 'comapnyDetailsId': companyId, 'JobId': jobId },
+            success: function (response) {
+                debugger;
+                $("#job-page").empty();
+                $("#job-page").append(response);
+                //$(".modal-backdrop").css("display", "none");
+                //return true;
+            },
+            error: function (response) {
+                console.log(response);
+                //return false;
+            }
+        });
+        }
+        
+    }
+    function SaveJobVacancy() {
+        debugger;
+        $("#PostJobLoader").css("display", "block");
+        $("#jobSavebtn").prop('disabled', true);
+        var url ='@Url.Action("SaveJob", "Job", new { area = "Company" })';
+        var formdata = new FormData($("#jobformsub").get(0));
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            success: function (message) {
+                debugger;
+                $("#jobSavebtn").prop('disabled', false);
+                $("#PostJobLoader").css("display", "none");
+
+                if (message.Error != null) {
+                    swal(message.error, "You clicked the button!", "success");
+                } else {
+                    if (message.IsSuccess) {
+                        LoadJobPartialSecond(message.Id);
+                        swal("Success !", "You clicked the button!", "success");
+                    } 
+                }
+            },
+            error: function () {
+                alert("There was error uploading files!");
+            }
+        });
+    }
+    @*function createObject() {
+
+        var obj = {
+            CompanyDetailsId: $("#" + '@Html.IdFor(m => m.Company.CompanyDetailsId)').val(),
+            CompanyName: $("#" + '@Html.IdFor(m => m.Company.CompanyName)').val(),
+            ContactNo: $("#" + '@Html.IdFor(m => m.Company.ContactNo)').val(),
+            WebLink: $("#" + '@Html.IdFor(m => m.Company.WebLink)').val(),
+        };
+
+        var mainObj = {
+            Company: obj,
+        }
+
+        return mainObj;
+    }*@
+
+</script>

@@ -13,5 +13,6 @@ namespace ITMVC.Base
         {
             return HttpContext.User.Identity.GetUserId();
         }
+
     }
 }

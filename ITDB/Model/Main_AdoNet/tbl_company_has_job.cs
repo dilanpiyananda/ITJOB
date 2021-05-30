@@ -15,8 +15,8 @@ namespace ITDB.Model.Main_AdoNet
     public partial class tbl_company_has_job
     {
         public int id { get; set; }
-        public string user_id { get; set; }
-        public int job_main_id { get; set; }
+        public long company_id { get; set; }
+        public long job_main_id { get; set; }
         public string system_comment { get; set; }
         public System.DateTime added_date { get; set; }
         public System.DateTime update_date { get; set; }

@@ -18,9 +18,9 @@ namespace ITDB.Model.Main_AdoNet
         public string category { get; set; }
         public string system_comment { get; set; }
         public System.DateTime added_date { get; set; }
-        public System.DateTime update_date { get; set; }
+        public Nullable<System.DateTime> update_date { get; set; }
         public string added_by { get; set; }
         public string update_by { get; set; }
-        public Nullable<bool> is_active { get; set; }
+        public bool is_active { get; set; }
     }
 }

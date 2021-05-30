@@ -35,5 +35,12 @@ namespace ITCOMMON.Services.Interface
         /// <returns></returns>
         string DeleteEmail(long emailId, string userUuid);
 
+        //-------------------------Drop Down---------------------------
+        /// <summary>
+        /// Get drop down
+        /// </summary>
+        /// <returns></returns>
+        List<NewSelectList> DropDown(long CompanyId);
+
     }
 }

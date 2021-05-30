@@ -8,10 +8,10 @@
     <Property Name="category" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
     <Property Name="added_date" Type="datetime" Nullable="false" />
-    <Property Name="update_date" Type="datetime" Nullable="false" />
-    <Property Name="added_by" Type="nvarchar" MaxLength="128" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="update_by" Type="nvarchar" MaxLength="128" />
-    <Property Name="is_active" Type="bit" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_company_has_accept_email">
     <Key>
@@ -32,8 +32,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="user_id" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="job_main_id" Type="int" Nullable="false" />
+    <Property Name="company_id" Type="bigint" Nullable="false" />
+    <Property Name="job_main_id" Type="bigint" Nullable="false" />
     <Property Name="system_comment" Type="nvarchar" MaxLength="150" />
     <Property Name="added_date" Type="datetime" Nullable="false" />
     <Property Name="update_date" Type="datetime" Nullable="false" />
@@ -89,6 +89,7 @@
     <Property Name="updated_by" Type="nvarchar" MaxLength="128" />
     <Property Name="is_active" Type="bit" Nullable="false" />
     <Property Name="category_id" Type="int" Nullable="false" />
+    <Property Name="web_approval" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_trust">
     <Key>

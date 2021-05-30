@@ -161,5 +161,24 @@ namespace ITDB.Repository.Class
                 }
             }
         }
+
+        //-------------------------Drop Down---------------------------
+        /// <summary>
+        /// Get drop down
+        /// </summary>
+        /// <returns></returns>
+        public List<NewSelectList> DropDown(long CompanyId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                var result = (from tbl_company_has_accept_email c in db.tbl_company_has_accept_email.Where(d => d.is_active == true && d.company_id == CompanyId)
+                              select new NewSelectList
+                              {
+                                  Id = c.id,
+                                  value = c.accept_email,
+                              }).ToList();
+                return result;
+            }
+        }
     }
 }

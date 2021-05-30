@@ -1,0 +1,63 @@
+﻿@using ITMVC.Models.JOBVM
+@using ITDB.Domain.Enum
+@model JobViewModel
+<form id="jobformsub">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center mt-4 mb-3 bk-color-white p-3 rounded color-gray">
+                <h5><b> POST COMPANY JOB</b></h5>
+                <p> Fill Below And Publish Your Job</p>
+            </div>
+        </div>
+
+        <div class="row bk-color-white p-3 rounded">
+            <div class="col-sm-12">
+                <img src="~/Image/jobpage/jobpost.jpg" class="common-image" />
+            </div>
+            <div class="col-sm-12 d-flex justify-content-center" style="margin:auto">
+                <div class="loader loadersdiv" id="PostJobLoader"></div>
+            </div>
+            <div class="col-sm-6 mt-3">
+                @Html.HiddenFor(d=>d.Job.JobMainId)
+                @Html.LabelFor(d => d.Job.Title)
+                @Html.TextBoxFor(d => d.Job.Title, new { @class = "form-control", @placeholder = "Job Title" })
+            </div>
+            <div class="col-sm-4 mt-3">
+                <label>Job Type</label>
+                @Html.EnumDropDownListFor(d => d.Job.JobTypes, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-2 mt-3">
+                @Html.LabelFor(d => d.Job.NumberOfVacancy)
+                @Html.TextBoxFor(d => d.Job.NumberOfVacancy, new { @class = "form-control", @type = "number" })
+            </div>
+            <div class="col-sm-12">
+                @Html.LabelFor(d => d.Job.Description)
+                @Html.TextAreaFor(d => d.Job.Description, new { @class = "form-control", @rows = "4" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(d => d.Job.CvAcceptEmailId)
+                @Html.DropDownListFor(d => d.Job.CvAcceptEmailId, new SelectList(Model.AcceptEmail, "Id", "value"), new { type = "date", @class = "form-control" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(d => d.Job.CategoryId)
+                @Html.DropDownListFor(d => d.Job.CategoryId, new SelectList(Model.Category, "Id", "value"), new { type = "date", @class = "form-control" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(d => d.Job.CategoryId)
+                @Html.TextBoxFor(m => m.JobImage, new { @class = "form-control", @placeholder = "Company Logo", @type = "file" })
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(d => d.Job.OpenDate)
+                @Html.TextBoxFor(d => d.Job.OpenDate, new { type = "date", @class = "form-control" })
+            </div>
+            <div class="col-sm-3">
+                @Html.LabelFor(d => d.Job.CloseDate)
+                @Html.TextBoxFor(d => d.Job.CloseDate, new { type = "date", @class = "form-control" })
+            </div>
+            <div class="col-sm-12 text-right mt-3">
+                <button type="button" id="companySavebtn" class="btn btn-primary" onclick="SaveJobVacancy()">PUBLISH JOB</button>
+            </div>
+        </div>
+    </div>
+</form>

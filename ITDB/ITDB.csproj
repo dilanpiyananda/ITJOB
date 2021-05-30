@@ -56,13 +56,19 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Domain\AcceptEmail.cs" />
+    <Compile Include="Domain\CategoryDom.cs" />
     <Compile Include="Domain\CompanyDom.cs" />
+    <Compile Include="Domain\CustomeJsonModel.cs" />
     <Compile Include="Domain\Document\Document.cs" />
     <Compile Include="Domain\Document\DocumentImageList.cs" />
     <Compile Include="Domain\Document\GlobleNote.cs" />
     <Compile Include="Domain\Enum\FileType.cs" />
+    <Compile Include="Domain\Enum\JobType.cs" />
     <Compile Include="Domain\Enum\Section.cs" />
     <Compile Include="Domain\Enum\TrustEnum.cs" />
+    <Compile Include="Domain\Job\CompanyHasJob.cs" />
+    <Compile Include="Domain\Job\JobMain.cs" />
+    <Compile Include="Domain\NewSelectList.cs" />
     <Compile Include="Domain\SystemData.cs" />
     <Compile Include="Model\Login_AdoNet\AspNetRole.cs">
       <DependentUpon>Login_Model.tt</DependentUpon>
@@ -135,15 +141,21 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Class\AcceptEmailRepository.cs" />
+    <Compile Include="Repository\Class\CategoryRepository.cs" />
     <Compile Include="Repository\Class\CompanyDataRepository.cs" />
+    <Compile Include="Repository\Class\CompanyHasJobRepository.cs" />
     <Compile Include="Repository\Class\DocumentDbRepository.cs" />
     <Compile Include="Repository\Class\DocumentRepository.cs" />
     <Compile Include="Repository\Class\GlobleNoteRepository.cs" />
+    <Compile Include="Repository\Class\JobPostRepository.cs" />
     <Compile Include="Repository\Interface\IAcceptEmailRepository.cs" />
+    <Compile Include="Repository\Interface\ICategoryRepository.cs" />
     <Compile Include="Repository\Interface\ICompanyDataRepository.cs" />
+    <Compile Include="Repository\Interface\ICompanyHasJobRepository.cs" />
     <Compile Include="Repository\Interface\IDocumentDbRepository.cs" />
     <Compile Include="Repository\Interface\IDocumentRepository.cs" />
     <Compile Include="Repository\Interface\IGlobleNoteRepository.cs" />
+    <Compile Include="Repository\Interface\IJobPostRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

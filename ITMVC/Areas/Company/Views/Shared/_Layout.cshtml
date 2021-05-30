@@ -21,18 +21,18 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Comapny<span class="sr-only">(current)</span></a>
+                <ul class="nav navbar-nav" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Job Category</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tobjobs" role="tab" aria-controls="profile" aria-selected="false" onclick="LoadJobPartial()">Post Job</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage Jobs</a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#mange-job" role="tab" aria-controls="contact" aria-selected="false">Mange Job</a>
                     </li>
-
                 </ul>
+
 
                 @if (Request.IsAuthenticated)
                 {
@@ -42,8 +42,8 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             @*<li>
-                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                </li>*@
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </li>*@
                             <li><a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                         </ul>
                     }

@@ -1,42 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="itjob_mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="itjob_mainEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tbl_category" EntityType="itjob_mainModel.tbl_category" />
-    <EntitySet Name="tbl_company_has_job" EntityType="itjob_mainModel.tbl_company_has_job" />
     <EntitySet Name="tbl_document" EntityType="itjob_mainModel.tbl_document" />
-    <EntitySet Name="tbl_job_main" EntityType="itjob_mainModel.tbl_job_main" />
     <EntitySet Name="tbl_trust" EntityType="itjob_mainModel.tbl_trust" />
     <EntitySet Name="tbl_user_company_details" EntityType="itjob_mainModel.tbl_user_company_details" />
     <EntitySet Name="tbl_globle_note" EntityType="itjob_mainModel.tbl_globle_note" />
     <EntitySet Name="tbl_company_has_accept_email" EntityType="itjob_mainModel.tbl_company_has_accept_email" />
+    <EntitySet Name="tbl_category" EntityType="itjob_mainModel.tbl_category" />
+    <EntitySet Name="tbl_job_main" EntityType="itjob_mainModel.tbl_job_main" />
+    <EntitySet Name="tbl_company_has_job" EntityType="itjob_mainModel.tbl_company_has_job" />
   </EntityContainer>
-  <EntityType Name="tbl_category">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="category" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="is_active" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbl_company_has_job">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="user_id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="job_main_id" Type="Int32" Nullable="false" />
-    <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="is_active" Type="Boolean" Nullable="false" />
-  </EntityType>
   <EntityType Name="tbl_document">
     <Key>
       <PropertyRef Name="id" />
@@ -50,26 +23,6 @@
     <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="is_active" Type="Boolean" Nullable="false" />
     <Property Name="ResolutionType" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tbl_job_main">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="number_of_vacancy" Type="Int32" />
-    <Property Name="open_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="close_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="attach_picture_id" Type="Int32" />
-    <Property Name="job_type_id" Type="Int32" />
-    <Property Name="cv_accept_email_id" Type="Int32" Nullable="false" />
-    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="is_active" Type="Boolean" Nullable="false" />
-    <Property Name="category_id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_trust">
     <Key>
@@ -124,6 +77,54 @@
     <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="company_id" Type="Int64" Nullable="false" />
     <Property Name="accept_email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="added_by" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="update_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_job_main">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="number_of_vacancy" Type="Int32" />
+    <Property Name="open_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="close_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="attach_picture_id" Type="Int32" />
+    <Property Name="job_type_id" Type="Int32" />
+    <Property Name="cv_accept_email_id" Type="Int32" Nullable="false" />
+    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="web_approval" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_company_has_job">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_id" Type="Int64" Nullable="false" />
+    <Property Name="job_main_id" Type="Int64" Nullable="false" />
     <Property Name="system_comment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
