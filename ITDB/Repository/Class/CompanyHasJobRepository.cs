@@ -44,5 +44,47 @@ namespace ITDB.Repository.Class
                 }
             }
         }
+        /// <summary>
+        /// Get ComapnyHasJob
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        public long[] GetComapnyHasJob(long companyId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable found = db.tbl_company_has_job.Where(d => d.company_id == companyId);
+
+                if (found != null)
+                    return MakeComDetails(found, db).Select(d=>d.JobMainId).ToArray();
+                else
+                    return null;
+
+            }
+        }
+
+        /// <summary>
+        /// company Details Add Domain Model
+        /// </summary>
+        /// <param name="found"></param>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public List<CompanyHasJob> MakeComDetails(IQueryable found, itjob_mainEntities db)
+        {
+            var result = (from tbl_company_has_job uc in found                         
+                          select new CompanyHasJob
+                          {
+                              CompanyHasJobId = uc.id,
+                              CompanyId = uc.company_id,
+                              JobMainId = uc.job_main_id,                           
+                              AddedBy = uc.added_by,
+                              UpdatedBy = uc.update_by,
+                              AddedDate = uc.added_date,
+                              UpdatedDate = uc.update_date,
+                              IsActive = uc.is_active,
+                          }).ToList();
+
+            return result;
+        }
     }
 }

@@ -4,6 +4,7 @@ using ITDB.Model.Main_AdoNet;
 using ITDB.Repository.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,43 @@ namespace ITDB.Repository.Class
 
             }
         }
+        /// <summary>
+        /// Get Job using job id
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetJobbyCompanyId(long[] jobId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable found = db.tbl_job_main.Where(d => jobId.Contains(d.id));
 
+                if (found != null)
+                    return MakeComDetails(found, db);
+                else
+                    return null;
+
+            }
+        }
+
+        /// <summary>
+        /// Get Job using job id
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetJobbyCompanyId(long [] jobIds, Approval aproval)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable found = db.tbl_job_main.Where(d => jobIds.Contains(d.id) && d.web_approval == (int)aproval);
+
+                if (found != null)
+                    return MakeComDetails(found, db);
+                else
+                    return null;
+
+            }
+        }
         /// <summary>
         /// company Details Add Domain Model
         /// </summary>
@@ -40,14 +77,18 @@ namespace ITDB.Repository.Class
         public List<JobMain> MakeComDetails(IQueryable found, itjob_mainEntities db)
         {
             var result = (from tbl_job_main uc in found
+                          from pt in db.tbl_company_has_accept_email.Where(x => x.id == uc.cv_accept_email_id).DefaultIfEmpty()
+                          from ca in db.tbl_category.Where(x => x.id == uc.category_id).DefaultIfEmpty()
                           select new JobMain
                           {
                               JobMainId = uc.id,
                               JobTypeId = uc.job_type_id,
                               CategoryId = uc.category_id,
+                              Category = ca.category,
                               CloseDate = uc.close_date,
                               OpenDate = uc.open_date,
                               CvAcceptEmailId = uc.cv_accept_email_id,
+                              CvAcceptEmail = pt.accept_email,
                               Description = uc.description,
                               NumberOfVacancy = uc.number_of_vacancy,
                               Title = uc.title,
@@ -57,6 +98,8 @@ namespace ITDB.Repository.Class
                               UpdatedDate = uc.updated_date,
                               IsActive = uc.is_active,
                               JobTypes=(JobType)uc.job_type_id,
+                              WebApproval = uc.web_approval,
+                              WebApprovaltype=(Approval)uc.web_approval,
                           }).ToList();
 
             return result;
@@ -85,7 +128,7 @@ namespace ITDB.Repository.Class
                     added_date = DateTime.Now,
                     updated_date = DateTime.Now,
                     is_active = true,
-                    web_approval=job.WebApproval,
+                    web_approval=(int)Approval.pending,
 
                 };
                 db.tbl_job_main.Add(tblModel);
@@ -100,6 +143,44 @@ namespace ITDB.Repository.Class
                 catch (Exception ex)
                 {
                     jobId = 0;
+                    return ex.Message.ToString();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update job
+        /// </summary>
+        /// <returns></returns>
+        public string Update(JobMain job, string userUuid)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                var dbobj = db.tbl_job_main.Where(d => d.id == job.JobMainId).FirstOrDefault();
+                if (dbobj == null)
+                    return "Table is empty";
+
+
+                dbobj.job_type_id = (int)job.JobTypes;
+                dbobj.category_id = job.CategoryId;
+                dbobj.title = job.Title;
+                dbobj.description = job.Description;
+                dbobj.cv_accept_email_id = job.CvAcceptEmailId;
+                dbobj.close_date = job.CloseDate;
+                dbobj.open_date = job.OpenDate;
+                dbobj.number_of_vacancy = job.NumberOfVacancy;
+                dbobj.updated_by = userUuid;
+                dbobj.updated_date = DateTime.Now;
+
+                db.Entry(dbobj).State = EntityState.Modified;
+                try
+                {
+                    db.SaveChanges();
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
                     return ex.Message.ToString();
                 }
             }

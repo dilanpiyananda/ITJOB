@@ -12,7 +12,8 @@ namespace ITMVC
                        "~/Scripts/jquery-{version}.js",
                        "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/jquery.unobtrusive-ajax.min.js",
-                       "~/Scripts/SweetAlert.js"));
+                       "~/Scripts/SweetAlert.js",
+                       "~/Scripts/DataTable/jquery.data.tables.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -30,8 +31,8 @@ namespace ITMVC
                       "~/Content/NavBar/navigation.css",
                       "~/Content/font-awesome.css",
                       "~/Content/font-awesome.min.css",
-                      "~/Content/commoncss.css"));
-
+                      "~/Content/commoncss.css",
+                      "~/Content/DataTable/jquery.Data.Tables.min.css"));
             //the following creates bundles in debug mode;
             BundleTable.EnableOptimizations = true;
         }

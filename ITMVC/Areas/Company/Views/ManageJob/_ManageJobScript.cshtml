@@ -1,0 +1,141 @@
+﻿<script>
+    function LoadMangeJobAll() {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("AllJobPartial", "ManageJob", new { area = "Company" })';
+            $.ajax({
+            type: "POST",
+            url: url,
+                data: { 'companyId': companyId },
+            success: function (response) {
+            debugger;
+                $("#AllJobDIV").empty();
+                $("#AllJobDIV").append(response);
+                
+            //$(".modal-backdrop").css("display", "none");
+            //return true;
+            },
+            error: function (response) {
+            console.log(response);
+            //return false;
+            }
+            });
+            }
+
+    }
+
+     function LoadPendingJobAll() {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("PendingApprovalJobPartial", "ManageJob", new { area = "Company" })';
+            $.ajax({
+            type: "POST",
+            url: url,
+                data: { 'companyId': companyId },
+            success: function (response) {
+            debugger;
+                $("#pendingJobDIV").empty();
+                $("#pendingJobDIV").append(response);
+                
+            //$(".modal-backdrop").css("display", "none");
+            //return true;
+            },
+            error: function (response) {
+            console.log(response);
+            //return false;
+            }
+            });
+            }
+
+    }
+
+    function LoadApprovedJobAll() {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("ApprovedJobPartial", "ManageJob", new { area = "Company" })';
+            $.ajax({
+            type: "POST",
+            url: url,
+                data: { 'companyId': companyId },
+            success: function (response) {
+            debugger;
+                $("#ApprovedJobDIV").empty();
+                $("#ApprovedJobDIV").append(response);
+                
+            //$(".modal-backdrop").css("display", "none");
+            //return true;
+            },
+            error: function (response) {
+            console.log(response);
+            //return false;
+            }
+            });
+            }
+
+    }
+
+    function LoadRejectedJobAll() {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("RejectedJobPartial", "ManageJob", new { area = "Company" })';
+            $.ajax({
+            type: "POST",
+            url: url,
+                data: { 'companyId': companyId },
+            success: function (response) {
+            debugger;
+                $("#RejectedJobDIV").empty();
+                $("#RejectedJobDIV").append(response);
+                
+            //$(".modal-backdrop").css("display", "none");
+            //return true;
+            },
+            error: function (response) {
+            console.log(response);
+            //return false;
+            }
+            });
+            }
+
+    }
+
+     function LoadJobPartialEdit(jobId) {
+        debugger;
+        var companyId = $("#Company_CompanyDetailsId").val();
+        if (companyId == "") {
+            swal("First Fill Company Details !", "You clicked the button!", "error");
+        } else {
+            var url = '@Url.Action("PostJob", "Job", new { area = "Company" })';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { 'comapnyDetailsId': companyId, 'JobId': jobId },
+            success: function (response) {
+                debugger;
+                $("#job-page").empty();
+                $("#job-page").append(response);
+                $("#post-tab").tab('show');
+                //$(".modal-backdrop").css("display", "none");
+                //return true;
+            },
+            error: function (response) {
+                console.log(response);
+                //return false;
+            }
+        });
+        }
+        
+    }
+</script>

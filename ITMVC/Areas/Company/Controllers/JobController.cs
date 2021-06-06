@@ -57,7 +57,8 @@ namespace ITMVC.Areas.Company.Controllers
             }
             else
             {
-
+                error = _jobService.Update(model.Job, GetUserUuid(), model.JobImage, model.CompanyId);
+                jobId = model.Job.JobMainId;
             }
             CustomeJsonModel jsonModel = new CustomeJsonModel();
             if(error == null)

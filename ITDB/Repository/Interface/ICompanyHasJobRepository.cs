@@ -14,5 +14,12 @@ namespace ITDB.Repository.Interface
         /// </summary>
         /// <returns></returns>
         string Save(CompanyHasJob job, string userUuid);
+
+        /// <summary>
+        /// Get ComapnyHasJob
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        long[] GetComapnyHasJob(long companyId);
     }
 }

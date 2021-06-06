@@ -59,5 +59,53 @@ namespace ITCOMMON.Services.Class
 
             return error;
         }
+        /// <summary>
+        /// Update job
+        /// </summary>
+        /// <returns></returns>
+        public string Update(JobMain job, string userUuid, HttpPostedFileBase JobImage, long companyId)
+        {
+            string error = _jobPostRepo.Update(job, userUuid);
+            if (error != null)
+                return error;
+
+            if (JobImage != null)
+            {
+                error = _documentService.UploadImage(JobImage, Section.Job, userUuid, job.JobMainId);
+            }
+
+            return error;
+        }
+
+        /// <summary>
+        /// Get Job using job id
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetJobbyCompanyId(long comapnyId)
+        {
+            long[] jobId = _compnyHasJobService.GetComapnyHasJob(comapnyId);
+
+            if (jobId == null)
+                return null;
+            else
+                return _jobPostRepo.GetJobbyCompanyId(jobId);
+        }
+
+        /// <summary>
+        /// Get Job using job id
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetJobbyCompanyId(long comapnyId, Approval aproval)
+        {
+            long[] jobId = _compnyHasJobService.GetComapnyHasJob(comapnyId);
+
+            if (jobId == null)
+                return null;
+            else
+                return _jobPostRepo.GetJobbyCompanyId(jobId, aproval);
+        }
+
     }
 }

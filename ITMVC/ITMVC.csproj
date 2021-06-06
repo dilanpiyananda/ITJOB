@@ -194,6 +194,7 @@
     <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
     <Compile Include="Areas\Company\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Company\Controllers\JobController.cs" />
+    <Compile Include="Areas\Company\Controllers\ManageJobController.cs" />
     <Compile Include="Areas\Visitor\Controllers\JobController.cs" />
     <Compile Include="Areas\Visitor\VisitorAreaRegistration.cs" />
     <Compile Include="Base\SystemBaseController.cs" />
@@ -223,6 +224,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstraps\bootstrap.min.css" />
     <Content Include="Content\commoncss.css" />
+    <Content Include="Content\DataTable\jquery.Data.Tables.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\NavBar\navigation.css" />
@@ -238,6 +240,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrapjs\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\DataTable\jquery.data.tables.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -274,6 +277,9 @@
     <Content Include="Areas\Company\Views\Company\_EmailAddEditPopup.cshtml" />
     <Content Include="Areas\Company\Views\Job\_PostJob.cshtml" />
     <Content Include="Areas\Company\Views\Job\_jobScript.cshtml" />
+    <Content Include="Areas\Company\Views\ManageJob\_AllJobPartial.cshtml" />
+    <Content Include="Areas\Company\Views\ManageJob\_ManageJob.cshtml" />
+    <Content Include="Areas\Company\Views\ManageJob\_ManageJobScript.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

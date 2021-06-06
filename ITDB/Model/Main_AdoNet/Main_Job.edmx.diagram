@@ -11,8 +11,8 @@
         <EntityTypeShape EntityType="itjob_mainModel.tbl_globle_note" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="itjob_mainModel.tbl_company_has_accept_email" Width="1.5" PointX="7.25" PointY="0.75" />
         <EntityTypeShape EntityType="itjob_mainModel.tbl_category" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="itjob_mainModel.tbl_job_main" Width="1.5" PointX="3.75" PointY="4.75" />
         <EntityTypeShape EntityType="itjob_mainModel.tbl_company_has_job" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="itjob_mainModel.tbl_job_main" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

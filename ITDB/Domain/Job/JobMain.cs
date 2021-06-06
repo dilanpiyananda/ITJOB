@@ -17,8 +17,11 @@ namespace ITDB.Domain.Job
         public DateTime CloseDate { get; set; }
         public int? JobTypeId { get; set; }
         public int CvAcceptEmailId { get; set; }
+        public string CvAcceptEmail { get; set; }
         public int CategoryId { get; set; }
-        public bool WebApproval { get; set; }
+        public string Category { get; set; }
+        public int WebApproval { get; set; }
+        public Approval WebApprovaltype { get; set; }
 
         public JobType JobTypes { get; set; }
     }

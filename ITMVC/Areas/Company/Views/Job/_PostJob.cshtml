@@ -18,7 +18,8 @@
                 <div class="loader loadersdiv" id="PostJobLoader"></div>
             </div>
             <div class="col-sm-6 mt-3">
-                @Html.HiddenFor(d=>d.Job.JobMainId)
+                @Html.HiddenFor(d => d.Job.JobMainId)
+                @Html.HiddenFor(d => d.CompanyId)
                 @Html.LabelFor(d => d.Job.Title)
                 @Html.TextBoxFor(d => d.Job.Title, new { @class = "form-control", @placeholder = "Job Title" })
             </div>
@@ -49,11 +50,11 @@
 
             <div class="col-sm-3">
                 @Html.LabelFor(d => d.Job.OpenDate)
-                @Html.TextBoxFor(d => d.Job.OpenDate, new { type = "date", @class = "form-control" })
+                @Html.TextBoxFor(d => d.Job.OpenDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
             </div>
             <div class="col-sm-3">
                 @Html.LabelFor(d => d.Job.CloseDate)
-                @Html.TextBoxFor(d => d.Job.CloseDate, new { type = "date", @class = "form-control" })
+                @Html.TextBoxFor(d => d.Job.CloseDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
             </div>
             <div class="col-sm-12 text-right mt-3">
                 <button type="button" id="companySavebtn" class="btn btn-primary" onclick="SaveJobVacancy()">PUBLISH JOB</button>

@@ -2,6 +2,7 @@
 
 @Html.Partial("_CompanyScript", new CompanyViewModel())
 @Html.Action("JobScript", "Job",new {area="Company" })
+@Html.Action("ShowScript", "ManageJob",new {area="Company" })
 
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -33,5 +34,12 @@
 
         </div>
     </div>
-    <div class="tab-pane fade" id="mange-job" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    <div class="tab-pane fade" id="mange-job" role="tabpanel" aria-labelledby="contact-tab">
+        @Html.Action("Index","ManageJob",new {area="Company" })  
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#MyJobTable').DataTable();
+    });
+</script>

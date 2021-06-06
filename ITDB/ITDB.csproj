@@ -62,6 +62,7 @@
     <Compile Include="Domain\Document\Document.cs" />
     <Compile Include="Domain\Document\DocumentImageList.cs" />
     <Compile Include="Domain\Document\GlobleNote.cs" />
+    <Compile Include="Domain\Enum\Approval.cs" />
     <Compile Include="Domain\Enum\FileType.cs" />
     <Compile Include="Domain\Enum\JobType.cs" />
     <Compile Include="Domain\Enum\Section.cs" />

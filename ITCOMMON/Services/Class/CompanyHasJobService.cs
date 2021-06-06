@@ -20,5 +20,15 @@ namespace ITCOMMON.Services.Class
         {
             return _companyHasJobRepo.Save(job, userUuid);
         }
+
+        /// <summary>
+        /// Get ComapnyHasJob
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        public long[] GetComapnyHasJob(long companyId)
+        {
+            return _companyHasJobRepo.GetComapnyHasJob(companyId);
+        }
     }
 }

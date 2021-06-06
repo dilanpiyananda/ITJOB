@@ -94,6 +94,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_company_has_job">
+      <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_job">
+        <MappingFragment StoreEntitySet="tbl_company_has_job">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="added_date" ColumnName="added_date" />
+          <ScalarProperty Name="system_comment" ColumnName="system_comment" />
+          <ScalarProperty Name="job_main_id" ColumnName="job_main_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbl_job_main">
       <EntityTypeMapping TypeName="itjob_mainModel.tbl_job_main">
         <MappingFragment StoreEntitySet="tbl_job_main">
@@ -112,21 +127,6 @@
           <ScalarProperty Name="number_of_vacancy" ColumnName="number_of_vacancy" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_company_has_job">
-      <EntityTypeMapping TypeName="itjob_mainModel.tbl_company_has_job">
-        <MappingFragment StoreEntitySet="tbl_company_has_job">
-          <ScalarProperty Name="is_active" ColumnName="is_active" />
-          <ScalarProperty Name="update_by" ColumnName="update_by" />
-          <ScalarProperty Name="added_by" ColumnName="added_by" />
-          <ScalarProperty Name="update_date" ColumnName="update_date" />
-          <ScalarProperty Name="added_date" ColumnName="added_date" />
-          <ScalarProperty Name="system_comment" ColumnName="system_comment" />
-          <ScalarProperty Name="job_main_id" ColumnName="job_main_id" />
-          <ScalarProperty Name="company_id" ColumnName="company_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
