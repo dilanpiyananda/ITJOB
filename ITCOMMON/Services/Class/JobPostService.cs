@@ -15,6 +15,7 @@ namespace ITCOMMON.Services.Class
         private readonly IJobPostRepository _jobPostRepo = new JobPostRepository();
         private readonly ICompanyHasJobService _compnyHasJobService = new CompanyHasJobService();
         private readonly IDocumentService _documentService = new DocumentService();
+        private readonly IGlobleNoteService _globleNoteService = new GlobleNoteService();
         /// <summary>
         /// Get Job using job id
         /// </summary>
@@ -105,6 +106,23 @@ namespace ITCOMMON.Services.Class
                 return null;
             else
                 return _jobPostRepo.GetJobbyCompanyId(jobId, aproval);
+        }
+
+        /// <summary>
+        /// Delete job
+        /// </summary>
+        /// <returns></returns>
+        public string Delete(long jobId)
+        {
+            string error = _jobPostRepo.Delete(jobId);
+
+            if (error == null)
+                return error;
+
+            error = _globleNoteService.DeleteGlobleNote(Section.Job, jobId);
+            error = _compnyHasJobService.deleteCompanyHasJobByJobId(jobId);
+
+            return error;
         }
 
     }

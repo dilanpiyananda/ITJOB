@@ -53,5 +53,17 @@ namespace ITMVC.Areas.Company.Controllers
         {
             return PartialView("_ManageJobScript");
         }
+
+        public JsonResult DeleteJobs(long jobId)
+        {
+            string error = _jobService.Delete(jobId);
+
+            if(error == null)
+                return Json(true);
+            else
+                return Json(false);
+
+
+        }
     }
 }

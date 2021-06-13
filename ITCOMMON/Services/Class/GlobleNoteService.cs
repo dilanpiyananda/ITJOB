@@ -44,5 +44,24 @@ namespace ITCOMMON.Services.Class
             return _globleNoteRepo.SaveGlobleNote(GlobleNoteList,userUuid);
 
         }
+
+        /// <summary>
+        /// Delete Globle Note
+        /// </summary>
+        public string DeleteGlobleNote(Section section, long parentId)
+        {
+            var globleNotepast = _globleNoteRepo.RetriveGlobleNote((int)section, parentId);
+
+            if (globleNotepast.Count() > 0)
+            {
+                string error = _globleNoteRepo.DeleteGlobleNote(globleNotepast.Select(d => d.GlobleNoteId).ToArray());
+                if (error != null)
+                    return error;
+                error = _documentDbRepo.DeleteDocument(globleNotepast.Select(d => d.DocumentId).ToArray());
+                if (error != null)
+                    return error;
+            }
+            return null;
+        }
     }
 }

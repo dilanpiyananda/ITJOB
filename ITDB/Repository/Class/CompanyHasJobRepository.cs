@@ -86,5 +86,33 @@ namespace ITDB.Repository.Class
 
             return result;
         }
+
+        /// <summary>
+        /// Delete company has job
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
+        public string deleteCompanyHasJobByJobId(long jobId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                var dbobj = db.tbl_company_has_job.Where(d => d.job_main_id == jobId).FirstOrDefault();
+                if (dbobj == null)
+                    return "company has Table is empty";
+
+                db.tbl_company_has_job.Remove(dbobj);
+
+                try
+                {
+                    db.SaveChanges();
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message.ToString();
+                }
+            }
+        }
     }
 }

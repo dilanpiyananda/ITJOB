@@ -41,5 +41,10 @@ namespace ITCOMMON.Services.Interface
         /// </summary>
         /// <returns></returns>
         string Update(JobMain job, string userUuid, HttpPostedFileBase JobImage, long companyId);
+        /// <summary>
+        /// Delete job
+        /// </summary>
+        /// <returns></returns>
+        string Delete(long jobId);
     }
 }

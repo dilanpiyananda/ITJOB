@@ -2,6 +2,9 @@
 @model List<JobMM>
 <div class="container">
     <div class="row">
+        <div class="col-sm-12 d-flex justify-content-center" style="margin:auto">
+            <div class="loader loadersdiv" id="JobShowDiv"></div>
+        </div>
         <div class="col-sm-12">
             @if (Model.Any())
             {
@@ -21,26 +24,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var job in  Model)
+                        @foreach (var job in Model)
                         {
-                        <tr>
-                            <th scope="row">@job.JobMainId</th>
-                            <td>@job.Title</td>
-                            <td>@job.Description</td>
-                            <td>@job.NumberOfVacancy</td>
-                            <td>@job.OpenDate.ToShortDateString()</td>
-                            <td>@job.CloseDate.ToShortDateString()</td>
-                            <td>@job.JobTypes.ToString()</td>
-                            <td>@job.CvAcceptEmail</td>
-                            <td>@job.Category</td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Delete</button>
-                                    <button type="button" class="btn btn-secondary" onclick="LoadJobPartialEdit('@job.JobMainId')">Edit</button>
-                                    <button type="button" class="btn btn-secondary">View</button>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <th scope="row">@job.JobMainId</th>
+                                <td>@job.Title</td>
+                                <td>@job.Description</td>
+                                <td>@job.NumberOfVacancy</td>
+                                <td>@job.OpenDate.ToShortDateString()</td>
+                                <td>@job.CloseDate.ToShortDateString()</td>
+                                <td>@job.JobTypes.ToString()</td>
+                                <td>@job.CvAcceptEmail</td>
+                                <td>@job.Category</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-secondary" onclick="DeleteJobPartial('@job.JobMainId')">Delete</button>
+                                        <button type="button" class="btn btn-secondary" onclick="LoadJobPartialEdit('@job.JobMainId')">Edit</button>
+                                        <button type="button" class="btn btn-secondary">View</button>
+                                    </div>
+                                </td>
+                            </tr>
                         }
 
 

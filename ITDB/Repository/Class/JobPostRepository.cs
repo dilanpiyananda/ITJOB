@@ -185,5 +185,33 @@ namespace ITDB.Repository.Class
                 }
             }
         }
+
+        /// <summary>
+        /// Delete job
+        /// </summary>
+        /// <returns></returns>
+        public string Delete(long jobId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                var dbobj = db.tbl_job_main.Where(d => d.id == jobId).FirstOrDefault();
+                if (dbobj == null)
+                    return "Table is empty";
+
+                db.tbl_job_main.Remove(dbobj);
+
+                try
+                {
+                    db.SaveChanges();
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message.ToString();
+                }
+            }
+        }
+
     }
 }

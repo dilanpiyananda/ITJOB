@@ -138,4 +138,54 @@
         }
         
     }
+
+    function DeleteJobPartial(jobid) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    DeleteJob(jobid);
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+    }
+
+    function DeleteJob(jobid) {
+        debugger;
+        $("#JobShowDiv").css("display", "show");
+       
+        var url =  '@Url.Action("DeleteJobs", "ManageJob", new { area = "Company" })';
+        var myobject = JSON.stringify({ 'jobId': jobid });
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: myobject,
+            success: function (response) {
+                debugger;
+                $("#JobShowDiv").css("display", "none");
+                if (response) {
+                    swal("Success !", "You clicked the button!", "success");
+                    LoadMangeJobAll();
+                    $("#all-job-tab").tab('show');
+                } else {
+                    swal(response, "You clicked the button!", "Error");
+                }
+
+                
+            },
+            error: function (response) {
+                alert("Errpr");
+                console.log(response);
+            }
+        });
+    }
 </script>
