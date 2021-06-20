@@ -15,6 +15,19 @@ namespace ITCOMMON.Services.Interface
         /// <param name="JobId"></param>
         /// <returns></returns>
         JobMain GetJob(long JobId);
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        List<JobMain> GetAllJob();
+
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        List<JobMain> GetAllJob(DateTime startTime, long skipCount);
 
         /// <summary>
         /// Get Job using job id

@@ -30,7 +30,24 @@ namespace ITDB.Repository.Class
 
             }
         }
+        /// <summary>
+        /// Get  Company Details by Company Id
+        /// </summary>
+        /// <param name="userUuid"></param>
+        /// <returns></returns>
+        public CompanyDom GetCompanyDetailsByCompanyId(long companyId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable company = db.tbl_user_company_details.Where(d => d.id == companyId);
 
+                if (company != null)
+                    return MakeComDetails(company, db).FirstOrDefault();
+                else
+                    return null;
+
+            }
+        }
         /// <summary>
         /// company Details Add Domain Model
         /// </summary>

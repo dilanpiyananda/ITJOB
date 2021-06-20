@@ -1,5 +1,5 @@
 ﻿using ITCOMMON.Services.Interface;
-using ITDB.Domain.Document;
+using ITDB.Domain.DocumentDom;
 using ITDB.Domain.Enum;
 using ITDB.Repository.Class;
 using ITDB.Repository.Interface;

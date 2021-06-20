@@ -28,5 +28,12 @@ namespace ITDB.Repository.Interface
         /// <param name="jobId"></param>
         /// <returns></returns>
         string deleteCompanyHasJobByJobId(long jobId);
+
+        /// <summary>
+        /// Get Company
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
+        long GetCompanyId(long jobId);
     }
 }

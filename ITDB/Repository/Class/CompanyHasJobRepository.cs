@@ -114,5 +114,24 @@ namespace ITDB.Repository.Class
                 }
             }
         }
+
+        /// <summary>
+        /// Get Company
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
+        public long GetCompanyId(long jobId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable found = db.tbl_company_has_job.Where(d => d.job_main_id == jobId);
+
+                if (found != null)
+                    return MakeComDetails(found, db).FirstOrDefault().CompanyId;
+                else
+                    return 0;
+
+            }
+        }
     }
 }

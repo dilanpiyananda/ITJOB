@@ -1,5 +1,5 @@
 ﻿using ITCOMMON.Services.Interface;
-using ITDB.Domain.Document;
+using ITDB.Domain.DocumentDom;
 using ITDB.Repository.Class;
 using ITDB.Repository.Interface;
 using System;
@@ -28,6 +28,15 @@ namespace ITCOMMON.Services.Class
             var docarray = _docdbRepo.SaveDocument(document, userUuid, out string error);
             errordoc = error;
             return docarray;
+        }
+        /// <summary>
+        /// Get Document using Parent Id
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
+        public List<Document> GetDocument(long parentId)
+        {
+            return _docdbRepo.GetDocument(parentId);
         }
     }
 }

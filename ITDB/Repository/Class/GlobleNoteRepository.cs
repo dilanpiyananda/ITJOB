@@ -1,4 +1,4 @@
-﻿using ITDB.Domain.Document;
+﻿using ITDB.Domain.DocumentDom;
 using ITDB.Model.Main_AdoNet;
 using ITDB.Repository.Interface;
 using System;

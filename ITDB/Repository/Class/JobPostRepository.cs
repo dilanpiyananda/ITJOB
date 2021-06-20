@@ -32,6 +32,46 @@ namespace ITDB.Repository.Class
             }
         }
         /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob()
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+
+                IQueryable found = db.tbl_job_main.Where(d => d.web_approval ==(int) Approval.approved);
+
+                if (found != null)
+                    return MakeComDetails(found, db);
+                else
+                    return null;
+
+            }
+        }
+
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob(DateTime startTime, long skipCount)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                
+                var found = db.tbl_job_main.Where(d => d.web_approval == (int)Approval.approved && d.is_active == true && d.open_date <= startTime && d.close_date >= startTime).OrderBy(d=>d.id).Skip(Convert.ToInt32(skipCount)).Take(12).ToList();
+
+                if (found != null && found.Count() > 0)
+                    return MakeComDetails(found.Select(d => d.id).ToArray(),db);
+                else
+                    return null;
+
+            }
+        }
+
+        /// <summary>
         /// Get Job using job id
         /// </summary>
         /// <param name="JobId"></param>
@@ -67,6 +107,43 @@ namespace ITDB.Repository.Class
                     return null;
 
             }
+        }
+
+        /// <summary>
+        /// company Details Add Domain Model
+        /// </summary>
+        /// <param name="found"></param>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public List<JobMain> MakeComDetails(int[] containIds, itjob_mainEntities db)
+        {
+            var result = (from tbl_job_main uc in db.tbl_job_main.Where(d=>containIds.Contains(d.id))
+                          from pt in db.tbl_company_has_accept_email.Where(x => x.id == uc.cv_accept_email_id).DefaultIfEmpty()
+                          from ca in db.tbl_category.Where(x => x.id == uc.category_id).DefaultIfEmpty()
+                          select new JobMain
+                          {
+                              JobMainId = uc.id,
+                              JobTypeId = uc.job_type_id,
+                              CategoryId = uc.category_id,
+                              Category = ca.category,
+                              CloseDate = uc.close_date,
+                              OpenDate = uc.open_date,
+                              CvAcceptEmailId = uc.cv_accept_email_id,
+                              CvAcceptEmail = pt.accept_email,
+                              Description = uc.description,
+                              NumberOfVacancy = uc.number_of_vacancy,
+                              Title = uc.title,
+                              AddedBy = uc.added_by,
+                              UpdatedBy = uc.updated_by,
+                              AddedDate = uc.added_date,
+                              UpdatedDate = uc.updated_date,
+                              IsActive = uc.is_active,
+                              JobTypes = (JobType)uc.job_type_id,
+                              WebApproval = uc.web_approval,
+                              WebApprovaltype = (Approval)uc.web_approval,
+                          }).ToList();
+
+            return result;
         }
         /// <summary>
         /// company Details Add Domain Model

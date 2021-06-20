@@ -1,4 +1,4 @@
-﻿using ITDB.Domain.Document;
+﻿using ITDB.Domain.DocumentDom;
 using System;
 using System.Collections.Generic;
 using System.Linq;

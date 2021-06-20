@@ -1,4 +1,4 @@
-﻿using ITDB.Domain.Document;
+﻿using ITDB.Domain.DocumentDom;
 using ITDB.Model.Main_AdoNet;
 using ITDB.Repository.Interface;
 using System;
@@ -91,6 +91,50 @@ namespace ITDB.Repository.Class
                 }
             }
             
+        }
+
+        /// <summary>
+        /// Get Document using Parent Id
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
+        public List<Document> GetDocument(long parentId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable found = db.tbl_globle_note.Where(d => d.related_id == parentId);
+
+                if (found != null)
+                    return MakeComDetails(found, db);
+                else
+                    return null;
+
+            }
+        }
+
+        /// <summary>
+        /// DOcument Details Add Domain Model
+        /// </summary>
+        /// <param name="found"></param>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public List<Document> MakeComDetails(IQueryable found, itjob_mainEntities db)
+        {
+            var result = (from tbl_globle_note uc in found
+                          from doc in db.tbl_document.Where(x => x.id == uc.document_id).DefaultIfEmpty()
+                          select new Document
+                          {
+                              DocumentId = doc.id,
+                              ResolutionType = doc.ResolutionType,
+                              virtualPath = doc.path,
+                              AddedBy = uc.added_by,
+                              UpdatedBy = uc.updated_by,
+                              AddedDate = uc.added_date,
+                              UpdatedDate = uc.updated_date,
+                              IsActive = uc.is_Active,
+                          }).ToList();
+
+            return result;
         }
     }
 }

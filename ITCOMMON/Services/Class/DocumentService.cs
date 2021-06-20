@@ -1,6 +1,6 @@
 ﻿using ITCOMMON.ServiceOfHelper;
 using ITCOMMON.Services.Interface;
-using ITDB.Domain.Document;
+using ITDB.Domain.DocumentDom;
 using ITDB.Domain.Enum;
 using System;
 using System.Collections.Generic;

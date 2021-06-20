@@ -13,6 +13,14 @@ namespace ITDB.Repository.Interface
         /// Get Comapny Details using userUuid
         /// </summary>
         CompanyDom GetCompanyDetails(string userUuid);
+
+        /// <summary>
+        /// Get  Company Details by Company Id
+        /// </summary>
+        /// <param name="userUuid"></param>
+        /// <returns></returns>
+        CompanyDom GetCompanyDetailsByCompanyId(long companyId);
+
         /// <summary>
         /// Save Company Record and upload and save image
         /// </summary>

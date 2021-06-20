@@ -1,0 +1,67 @@
+﻿<script>
+    var skipCount = 0;
+    function LoadData() {
+        debugger;
+        //$("#emailLoader").css("display", "show");
+        var url = '@Url.Action("CompanyJob", "Home", new { area = "" })';
+        var dataobj = JSON.stringify({ 'skipCount': Number(skipCount) });
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: dataobj,
+            success: function (response) {
+                debugger;
+                //$("#emailLoader").css("display", "none");
+                if (response) {
+                    //swal("Success !", "You clicked the button!", "success");
+                    //LoadEmailPartial();
+                    $("#jobdatalongrow").append(MakeJobs(response));
+                } else {
+                    //swal(response, "You clicked the button!", "Error");
+                }
+
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function MakeJobs(data) {
+        html = "";
+        $.each(data, function (i, item) {
+           html=html+ IndidualRow(data[i]);
+            alert(data[i].PageName);
+        });
+        return html;
+    }
+    function IndidualRow(datarow) {
+        var Html = `<div class="row p-3 rounded mb-2" style="background-color:white">
+                    <div class="col-sm-2">
+                        <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:80px;object-fit:cover" />
+                    </div>
+                    <div class="col-sm-8">
+                        <h5><b>${datarow.Title}</b></h5>
+                        <p>${datarow.Description}</p>
+                        <p style="color:#778594">${datarow.NumberOfDays} Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p style="color:#778594">
+                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                            &nbsp; ${datarow.JobTypes}
+                        </p>
+                        <p style="color:#778594">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            &nbsp; ${datarow.NumberOfExpire}
+                        </p>
+
+                    </div>
+                </div>`;
+        return Html;
+    }
+</script>
+

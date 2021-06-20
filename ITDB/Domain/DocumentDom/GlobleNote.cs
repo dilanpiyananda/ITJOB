@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITDB.Domain.Document
+namespace ITDB.Domain.DocumentDom
 {
     public class GlobleNote:SystemData
     {

@@ -20,7 +20,15 @@ namespace ITCOMMON.Services.Class
             return _CompanyRepo.GetCompanyDetails(userUuid);
             var companyDetails = _CompanyRepo.GetCompanyDetails(userUuid);
         }
-
+        /// <summary>
+        /// Get  Company Details by Company Id
+        /// </summary>
+        /// <param name="userUuid"></param>
+        /// <returns></returns>
+        public CompanyDom GetCompanyDetailsByCompanyId(long companyId)
+        {
+            return _CompanyRepo.GetCompanyDetailsByCompanyId(companyId);
+        }
         /// <summary>
         /// Save Company Record and upload and save image
         /// </summary>

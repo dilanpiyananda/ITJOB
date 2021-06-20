@@ -14,6 +14,13 @@ namespace ITCOMMON.Services.Interface
         CompanyDom GetCompanyDetails(string userUuid);
 
         /// <summary>
+        /// Get  Company Details by Company Id
+        /// </summary>
+        /// <param name="userUuid"></param>
+        /// <returns></returns>
+        CompanyDom GetCompanyDetailsByCompanyId(long companyId);
+
+        /// <summary>
         /// Save Company Record and upload and save image
         /// </summary>
         string Save(string userUuid, CompanyDom company, HttpPostedFileBase uploadFile, out int comapanyDetailsId);

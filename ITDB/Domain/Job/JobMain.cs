@@ -1,9 +1,11 @@
-﻿using ITDB.Domain.Enum;
+﻿using ITDB.Domain.DocumentDom;
+using ITDB.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace ITDB.Domain.Job
 {
@@ -24,5 +26,9 @@ namespace ITDB.Domain.Job
         public Approval WebApprovaltype { get; set; }
 
         public JobType JobTypes { get; set; }
+        public List<Document> DocumentData { get; set; }
+        public List<Document> LogoData { get; set; }
+        public List<Document> CompanyLogo { get; set; }
+        public CompanyDom CompanyDetails { get; set; }
     }
 }

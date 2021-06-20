@@ -9,34 +9,33 @@
     @Html.Partial("_Links")
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                ITJOBHUNTER
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101" style="background-color:white!important">
+        <div class="container" >
+            <a class="navbar-brand" href="#" style="color:black!important;font-size:25px;">
+                <b>ITJOBHUNTER</b>  
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor02">
+            <div class="collapse navbar-collapse" id="navbarColor02" >
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Post Job<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" style="color:#0000006b!important;font-size:25px" href="#"><b>Home</b><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">All Job</a>
+                        <a class="nav-link" style="color:#0000006b!important;font-size:25px;" href="#"><b>Post Job</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Category</a>
+                        <a class="nav-link" style="color:#0000006b!important;font-size:25px;" href="#"><b>About Us</b></a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:#0000006b!important;font-size:25px;" href="#"><b>Contact Us</b></a>
+                    </li>
                 </ul>
                 <form class="form-inline">
                     <div class="input-group search-box">
-                        <input type="text" class="form-control" placeholder="Enter Search Job Tag?" aria-label="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
-                        </span>
+                        
                     </div>
                 </form>
                 &nbsp;
@@ -47,17 +46,18 @@
                         @Html.AntiForgeryToken()
 
                         <ul class="nav navbar-nav navbar-right">
+                            
                             @*<li>
                                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                             </li>*@
-                            <li><a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            <li><a class="btn btn-primary"  href="javascript:document.getElementById('logoutForm').submit()"><b>ACCOUNT</b></a></li>
                         </ul>
                     }
                 }
                 else
                 {
                         <a href="@Url.Action("Login","Account",new {area="" })" class="btn btn-primary">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login
+                            <b><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;LOGIN</b> 
                         </a>
                 }    
             </div>

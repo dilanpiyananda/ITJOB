@@ -14,7 +14,9 @@ namespace ITCOMMON.Services.Class
     {
         private readonly IJobPostRepository _jobPostRepo = new JobPostRepository();
         private readonly ICompanyHasJobService _compnyHasJobService = new CompanyHasJobService();
+        private readonly IComapnyDataService _compnyDataService = new ComapnyDataService();
         private readonly IDocumentService _documentService = new DocumentService();
+        private readonly IDocumentDbService _documentDbService = new DocumentDbService();
         private readonly IGlobleNoteService _globleNoteService = new GlobleNoteService();
         /// <summary>
         /// Get Job using job id
@@ -25,7 +27,43 @@ namespace ITCOMMON.Services.Class
         {
             return _jobPostRepo.GetJob(JobId);
         }
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob()
+        {
+            var job = _jobPostRepo.GetAllJob();
+            foreach(var a in job)
+            {
+                a.DocumentData = _documentDbService.GetDocument(a.JobMainId);
+                long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
+                a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+                a.CompanyLogo = _documentDbService.GetDocument(companyId);
+            }
+            return job;
+        }
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob(DateTime startTime, long skipCount)
+        {
+            var jobs= _jobPostRepo.GetAllJob(startTime,skipCount);
+            if (jobs == null)
+                return null;
 
+            foreach (var a in jobs)
+            {
+                a.DocumentData = _documentDbService.GetDocument(a.JobMainId);
+                long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
+                a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+                a.CompanyLogo = _documentDbService.GetDocument(companyId);
+            }
+            return jobs;
+        }
         /// <summary>
         /// Save job
         /// </summary>

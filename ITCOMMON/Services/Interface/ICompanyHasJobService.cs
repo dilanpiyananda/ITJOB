@@ -22,6 +22,13 @@ namespace ITCOMMON.Services.Interface
         long[] GetComapnyHasJob(long companyId);
 
         /// <summary>
+        /// Get Company
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
+        long GetCompanyId(long jobId);
+
+        /// <summary>
         /// Delete company has job
         /// </summary>
         /// <param name="jobId"></param>

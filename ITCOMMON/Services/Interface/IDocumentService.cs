@@ -13,5 +13,7 @@ namespace ITCOMMON.Services.Interface
         /// </summary>
         /// <returns></returns>
         string UploadImage(HttpPostedFileBase file, Section section,string userId, long parentId);
+
+        
     }
 }

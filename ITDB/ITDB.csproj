@@ -59,9 +59,9 @@
     <Compile Include="Domain\CategoryDom.cs" />
     <Compile Include="Domain\CompanyDom.cs" />
     <Compile Include="Domain\CustomeJsonModel.cs" />
-    <Compile Include="Domain\Document\Document.cs" />
-    <Compile Include="Domain\Document\DocumentImageList.cs" />
-    <Compile Include="Domain\Document\GlobleNote.cs" />
+    <Compile Include="Domain\DocumentDom\Document.cs" />
+    <Compile Include="Domain\DocumentDom\DocumentImageList.cs" />
+    <Compile Include="Domain\DocumentDom\GlobleNote.cs" />
     <Compile Include="Domain\Enum\Approval.cs" />
     <Compile Include="Domain\Enum\FileType.cs" />
     <Compile Include="Domain\Enum\JobType.cs" />

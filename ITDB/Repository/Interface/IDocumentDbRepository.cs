@@ -1,4 +1,4 @@
-﻿using ITDB.Domain.Document;
+﻿using ITDB.Domain.DocumentDom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +17,12 @@ namespace ITDB.Repository.Interface
         /// <param name="documentIds"></param>
         /// <returns></returns>
         string DeleteDocument(long[] documentIds);
+
+        /// <summary>
+        /// Get Document using Parent Id
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
+        List<Document> GetDocument(long parentId);
     }
 }

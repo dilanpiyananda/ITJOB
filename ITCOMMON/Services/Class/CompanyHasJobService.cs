@@ -40,5 +40,15 @@ namespace ITCOMMON.Services.Class
         {
             return _companyHasJobRepo.deleteCompanyHasJobByJobId(jobId);
         }
+
+        /// <summary>
+        /// Get Company
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
+        public long GetCompanyId(long jobId)
+        {
+           return _companyHasJobRepo.GetCompanyId(jobId);
+        }
     }
 }

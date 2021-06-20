@@ -1,12 +1,19 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@Html.Partial("_HomeScript")
 <div class="container-fluid mt-5 mb-5">
     <div class="row">
         <div class="col-sm-3 text-left">
             <h5><b>JOBS IN</b></h5>
             <p>Main Western Province In Sri Lanka</p>
+            <button type="button" class="btn btn-warning"><b>NEED POST JOB</b> </button>
+            <br />
+            <hr />
+            <h5><b>Select Category</b></h5>
+            <label> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">Software</a></label><br />
+            <label> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">Software</a></label>
+            <br />
         </div>
         <div class="col-sm-6 rounded" style="background-color:#eceff4">
             <div class="container mt-3 mb-3">
@@ -40,8 +47,10 @@
                         <button type="button" class="btn btn-light btn-lg"><i class="fa fa-image"></i></button>
                     </div>
                 </div>
+                <div id="jobdatalongrow">
 
-                <div class="row p-3 rounded" style="background-color:white">
+                </div>
+                @*<div class="row p-3 rounded mb-2" style="background-color:white">
                     <div class="col-sm-2">
                         <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:80px;object-fit:cover" />
                     </div>
@@ -61,17 +70,16 @@
                         </p>
 
                     </div>
-                </div>
+                </div>*@
 
-                <div class="row" >
+                @*<div class="row">
                     <div class="col-sm-4 p-3 rounded" style="background-color:white">
-
-                            <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:140px;object-fit:cover" />
+                        <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:80px;object-fit:cover" />
                         <p><b>JOB TITLE</b></p>
                         <p style="color:#778594">3 Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
                     </div>
-                    
-                </div>
+
+                </div>*@
             </div>
         </div>
         <div class="col-sm-3">
@@ -79,3 +87,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    // A $( document ).ready() block.
+    $(document).ready(function () {
+        LoadData();
+    });
+</script>
