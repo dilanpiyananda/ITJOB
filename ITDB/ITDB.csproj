@@ -71,6 +71,7 @@
     <Compile Include="Domain\Job\JobMain.cs" />
     <Compile Include="Domain\NewSelectList.cs" />
     <Compile Include="Domain\SystemData.cs" />
+    <Compile Include="Domain\Tag.cs" />
     <Compile Include="Model\Login_AdoNet\AspNetRole.cs">
       <DependentUpon>Login_Model.tt</DependentUpon>
     </Compile>
@@ -134,6 +135,12 @@
     <Compile Include="Model\Main_AdoNet\tbl_job_main.cs">
       <DependentUpon>Main_Job.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_tag.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Main_AdoNet\tbl_tag_has_Job.cs">
+      <DependentUpon>Main_Job.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Main_AdoNet\tbl_trust.cs">
       <DependentUpon>Main_Job.tt</DependentUpon>
     </Compile>
@@ -149,6 +156,7 @@
     <Compile Include="Repository\Class\DocumentRepository.cs" />
     <Compile Include="Repository\Class\GlobleNoteRepository.cs" />
     <Compile Include="Repository\Class\JobPostRepository.cs" />
+    <Compile Include="Repository\Class\TagRepository.cs" />
     <Compile Include="Repository\Interface\IAcceptEmailRepository.cs" />
     <Compile Include="Repository\Interface\ICategoryRepository.cs" />
     <Compile Include="Repository\Interface\ICompanyDataRepository.cs" />
@@ -157,6 +165,7 @@
     <Compile Include="Repository\Interface\IDocumentRepository.cs" />
     <Compile Include="Repository\Interface\IGlobleNoteRepository.cs" />
     <Compile Include="Repository\Interface\IJobPostRepository.cs" />
+    <Compile Include="Repository\Interface\ITagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

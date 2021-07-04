@@ -12,23 +12,14 @@ namespace ITDB.Model.Main_AdoNet
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_job_main
+    public partial class tbl_tag
     {
-        public int id { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public Nullable<int> number_of_vacancy { get; set; }
-        public System.DateTime open_date { get; set; }
-        public System.DateTime close_date { get; set; }
-        public Nullable<int> attach_picture_id { get; set; }
-        public Nullable<int> job_type_id { get; set; }
-        public int cv_accept_email_id { get; set; }
+        public long TagId { get; set; }
+        public string TagName { get; set; }
         public System.DateTime added_date { get; set; }
         public Nullable<System.DateTime> updated_date { get; set; }
         public string added_by { get; set; }
         public string updated_by { get; set; }
         public bool is_active { get; set; }
-        public int category_id { get; set; }
-        public int web_approval { get; set; }
     }
 }

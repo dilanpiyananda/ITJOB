@@ -12,6 +12,16 @@ namespace ITCOMMON.Services.Class
     public class CategoryService: ICategoryService
     {
         private readonly ICategoryRepository _categoryRepo = new CategoryRepository();
+
+        /// <summary>
+        /// Get All Category
+        /// </summary>
+        /// <returns></returns>
+        public List<CategoryDom> GetAllCategory()
+        {
+           return _categoryRepo.GetAllCategory();
+        }
+
         //-------------------------------dropdown--------------------
         /// <summary>
         /// Dropdown

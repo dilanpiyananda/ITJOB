@@ -61,7 +61,7 @@ namespace ITDB.Repository.Class
             using (itjob_mainEntities db = new itjob_mainEntities())
             {
                 
-                var found = db.tbl_job_main.Where(d => d.web_approval == (int)Approval.approved && d.is_active == true && d.open_date <= startTime && d.close_date >= startTime).OrderBy(d=>d.id).Skip(Convert.ToInt32(skipCount)).Take(12).ToList();
+                var found = db.tbl_job_main.Where(d => d.web_approval == (int)Approval.approved && d.is_active == true && d.open_date <= startTime && d.close_date >= startTime).OrderBy(d=>d.id).Skip(Convert.ToInt32(skipCount)).Take(6).ToList();
 
                 if (found != null && found.Count() > 0)
                     return MakeComDetails(found.Select(d => d.id).ToArray(),db);

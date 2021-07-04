@@ -18,6 +18,7 @@ namespace ITCOMMON.Services.Class
         private readonly IDocumentService _documentService = new DocumentService();
         private readonly IDocumentDbService _documentDbService = new DocumentDbService();
         private readonly IGlobleNoteService _globleNoteService = new GlobleNoteService();
+        private readonly ITagService _tagService = new TagService();
         /// <summary>
         /// Get Job using job id
         /// </summary>
@@ -25,7 +26,14 @@ namespace ITCOMMON.Services.Class
         /// <returns></returns>
         public JobMain GetJob(long JobId)
         {
-            return _jobPostRepo.GetJob(JobId);
+            var job= _jobPostRepo.GetJob(JobId);
+            job.DocumentData = _documentDbService.GetDocument(job.JobMainId);
+            long companyId = _compnyHasJobService.GetCompanyId(job.JobMainId);
+            job.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+            job.CompanyLogo = _documentDbService.GetDocument(companyId);
+            job.TagsList = _tagService.GetTags(job.JobMainId);
+            job.TagName = _tagService.GetTags(job.JobMainId).Count() > 0 ? string.Join(",", _tagService.GetTags(job.JobMainId).Select(d => d.TagName).ToList()) : null;
+            return job;
         }
         /// <summary>
         /// Get All Job
@@ -41,6 +49,8 @@ namespace ITCOMMON.Services.Class
                 long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
                 a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
                 a.CompanyLogo = _documentDbService.GetDocument(companyId);
+                a.TagsList = _tagService.GetTags(a.JobMainId);
+                a.TagName= _tagService.GetTags(a.JobMainId).Count()>0? string.Join(",", _tagService.GetTags(a.JobMainId).Select(d=>d.TagName).ToList()):null;
             }
             return job;
         }
@@ -61,6 +71,8 @@ namespace ITCOMMON.Services.Class
                 long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
                 a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
                 a.CompanyLogo = _documentDbService.GetDocument(companyId);
+                a.TagsList = _tagService.GetTags(a.JobMainId);
+                a.TagName = _tagService.GetTags(a.JobMainId).Count() > 0 ? string.Join(",", _tagService.GetTags(a.JobMainId).Select(d => d.TagName).ToList()) : null;
             }
             return jobs;
         }
@@ -78,6 +90,15 @@ namespace ITCOMMON.Services.Class
             }
 
             JobsId = jobId;
+            if(job.TagName != null && job.TagName != "")
+            {
+                string[] tagsList = job.TagName.Split(',');
+               error= _tagService.SaveTag(tagsList, JobsId, userUuid);
+                if (error != null)
+                    return error;
+
+            }
+            
 
             CompanyHasJob cojob = new CompanyHasJob()
             {
@@ -108,6 +129,19 @@ namespace ITCOMMON.Services.Class
             if (error != null)
                 return error;
 
+            if (job.TagName != null && job.TagName != "")
+            {
+                string[] tagsList = job.TagName.Split(',');
+                error = _tagService.UpdateTag(tagsList, job.JobMainId, userUuid);
+                if (error != null)
+                    return error;
+
+            }
+            else
+            {
+                error = _tagService.DeleteTag(job.JobMainId);
+            }
+
             if (JobImage != null)
             {
                 error = _documentService.UploadImage(JobImage, Section.Job, userUuid, job.JobMainId);
@@ -128,7 +162,20 @@ namespace ITCOMMON.Services.Class
             if (jobId == null)
                 return null;
             else
-                return _jobPostRepo.GetJobbyCompanyId(jobId);
+            {
+                var jobs = _jobPostRepo.GetJobbyCompanyId(jobId);
+                foreach (var a in jobs)
+                {
+                    a.DocumentData = _documentDbService.GetDocument(a.JobMainId);
+                    long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
+                    a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+                    a.CompanyLogo = _documentDbService.GetDocument(companyId);
+                    a.TagsList = _tagService.GetTags(a.JobMainId);
+                    a.TagName = _tagService.GetTags(a.JobMainId).Count() > 0 ? string.Join(",", _tagService.GetTags(a.JobMainId).Select(d => d.TagName).ToList()) : null;
+                }
+                return jobs;
+            }
+                
         }
 
         /// <summary>
@@ -143,7 +190,19 @@ namespace ITCOMMON.Services.Class
             if (jobId == null)
                 return null;
             else
-                return _jobPostRepo.GetJobbyCompanyId(jobId, aproval);
+            {
+                var jobs = _jobPostRepo.GetJobbyCompanyId(jobId, aproval);
+                foreach (var a in jobs)
+                {
+                    a.DocumentData = _documentDbService.GetDocument(a.JobMainId);
+                    long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
+                    a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+                    a.CompanyLogo = _documentDbService.GetDocument(companyId);
+                    a.TagsList = _tagService.GetTags(a.JobMainId);
+                    a.TagName = _tagService.GetTags(a.JobMainId).Count() > 0 ? string.Join(",", _tagService.GetTags(a.JobMainId).Select(d => d.TagName).ToList()) : null;
+                }
+                return jobs;
+            }
         }
 
         /// <summary>

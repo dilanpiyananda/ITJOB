@@ -56,6 +56,11 @@
                 @Html.LabelFor(d => d.Job.CloseDate)
                 @Html.TextBoxFor(d => d.Job.CloseDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
             </div>
+            <div class="col-sm-12">
+
+                @Html.LabelFor(d => d.Job.TagName)
+                @Html.TextBoxFor(d => d.Job.TagName, new { @class = "form-control", @placeholder = "tag1,tag2,tag3,...." })
+            </div>
             <div class="col-sm-12 text-right mt-3">
                 <button type="button" id="companySavebtn" class="btn btn-primary" onclick="SaveJobVacancy()">PUBLISH JOB</button>
             </div>

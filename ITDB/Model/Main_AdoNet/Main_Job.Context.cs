@@ -33,5 +33,7 @@ namespace ITDB.Model.Main_AdoNet
         public virtual DbSet<tbl_category> tbl_category { get; set; }
         public virtual DbSet<tbl_company_has_job> tbl_company_has_job { get; set; }
         public virtual DbSet<tbl_job_main> tbl_job_main { get; set; }
+        public virtual DbSet<tbl_tag> tbl_tag { get; set; }
+        public virtual DbSet<tbl_tag_has_Job> tbl_tag_has_Job { get; set; }
     }
 }

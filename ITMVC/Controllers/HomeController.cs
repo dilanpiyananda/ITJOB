@@ -9,6 +9,8 @@ using ITCOMMON.Services.Interface;
 using ITCOMMON.Services.Class;
 using ITDB.Domain.Job;
 using ITDB.Domain.Enum;
+using ITMVC.Models;
+using AutoMapper;
 
 namespace ITMVC.Controllers
 {
@@ -16,11 +18,17 @@ namespace ITMVC.Controllers
     {
         private readonly IDocumentDbService _dbDoc = new DocumentDbService();
         private readonly IJobPostService _jobPost = new JobPostService();
+        private readonly ICategoryService _categorySerice = new CategoryService();
 
         public ActionResult Index()
         {
             string userUuid = HttpContext.User.Identity.GetUserId();
-            return View();
+            HomeViewModel model = new HomeViewModel()
+            {
+                Categories = Mapper.Map<List<CategoryMM>>(_categorySerice.GetAllCategory()),
+                CategoryDropDown = _categorySerice.DropDown()
+            };
+            return View(model);
         }
 
         public ActionResult About()
@@ -41,7 +49,7 @@ namespace ITMVC.Controllers
         {
             var model = _jobPost.GetAllJob(DateTime.Now,skipCount);
             if (model == null)
-                return null;
+                return Json(false);
 
             var result = (from JobMain jo in model
                           select new
@@ -51,11 +59,10 @@ namespace ITMVC.Controllers
                               Description = jo.Description,
                               CvAcceptEmail = jo.CvAcceptEmail,
                               NumberOfVacancy = jo.NumberOfVacancy,
-                              JobTypes = jo.JobTypes,
-                              ComapnyLogo=jo.CompanyLogo != null ? jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath : null,
-                              NumberOfDays=( DateTime.Now - jo.OpenDate),
-                              NumberOfExpire = ( jo.CloseDate-DateTime.Now)
-
+                              JobTypes = ((JobType)jo.JobTypes).ToString(),
+                              ComapnyLogo=jo.CompanyLogo.Count() > 0 ?(jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~","..") : null,
+                              NumberOfDays=Convert.ToInt32(( DateTime.Now - jo.OpenDate).TotalDays),
+                              NumberOfExpire =Convert.ToInt32( ( jo.CloseDate-DateTime.Now).TotalDays)
                           }).ToList();
             return Json(result);
         }

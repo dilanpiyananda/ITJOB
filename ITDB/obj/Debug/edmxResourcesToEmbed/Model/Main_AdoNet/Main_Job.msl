@@ -131,5 +131,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_tag">
+      <EntityTypeMapping TypeName="itjob_mainModel.tbl_tag">
+        <MappingFragment StoreEntitySet="tbl_tag">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="added_date" ColumnName="added_date" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_tag_has_Job">
+      <EntityTypeMapping TypeName="itjob_mainModel.tbl_tag_has_Job">
+        <MappingFragment StoreEntitySet="tbl_tag_has_Job">
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="added_date" ColumnName="added_date" />
+          <ScalarProperty Name="tagId" ColumnName="tagId" />
+          <ScalarProperty Name="jobmainId" ColumnName="jobmainId" />
+          <ScalarProperty Name="jobhastagId" ColumnName="jobhastagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -9,6 +9,12 @@ namespace ITDB.Repository.Interface
 {
     public interface ICategoryRepository
     {
+        /// <summary>
+        /// Get All Category
+        /// </summary>
+        /// <returns></returns>
+        List<CategoryDom> GetAllCategory();
+
         //-------------------------------dropdown--------------------
         /// <summary>
         /// Dropdown

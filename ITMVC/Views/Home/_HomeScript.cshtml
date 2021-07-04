@@ -1,11 +1,49 @@
 ﻿<script>
     var skipCount = 0;
-    function LoadData() {
+    var callBack = true;
+    var prevcallFunc = "";
+
+    function ThumbnilChange(islongrow) {
+        if (islongrow) {
+            $("#jobdatalongrow").css("display", "block");
+            $("#jobdatasortrow").css("display", "none");
+        } else {
+            $("#jobdatalongrow").css("display", "none");
+            $("#jobdatasortrow").css("display", "block");
+        }
+    }
+
+    jQuery(function ($) {
+        $('#jobdatalongrow').on('scroll', function () {
+            if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                debugger;
+                if (callBack) {
+
+                    if (prevcallFunc == "mainfunc") {
+                        LoadData(true);
+                    }
+                    
+                }
+            }
+        })
+    });
+
+    
+
+    function DefaltAddedData(functionname) {
+        prevcallFunc = functionname;
+        skipCount = 0;
+        callBack = true;
+    }
+    function LoadData(isScroll) {
         debugger;
         //$("#emailLoader").css("display", "show");
         var url = '@Url.Action("CompanyJob", "Home", new { area = "" })';
         var dataobj = JSON.stringify({ 'skipCount': Number(skipCount) });
-
+        if (!isScroll) {
+            DefaltAddedData("mainfunc");
+        }
+        
         $.ajax({
             type: "POST",
             url: url,
@@ -15,13 +53,25 @@
             success: function (response) {
                 debugger;
                 //$("#emailLoader").css("display", "none");
-                if (response) {
-                    //swal("Success !", "You clicked the button!", "success");
-                    //LoadEmailPartial();
-                    $("#jobdatalongrow").append(MakeJobs(response));
+                if (!response) {
+                    callBack = false;
                 } else {
-                    //swal(response, "You clicked the button!", "Error");
+                    if (response != null) {
+                        //swal("Success !", "You clicked the button!", "success");
+                        //LoadEmailPartial();
+                        if (response.length < 6) {
+                            callBack = false;
+                        }
+                        skipCount = skipCount + 6;
+                        $("#jobdatalongrow").append(MakeJobs(response));
+                        $("#jobdatasortrow").append(makeSortJobs(response));
+                        $("#jobdatasortrow").css("display", "none");
+                    } else {
+                        callBack = false;
+                        //swal(response, "You clicked the button!", "Error");
+                    }
                 }
+                
 
 
             },
@@ -32,18 +82,48 @@
     }
 
     function MakeJobs(data) {
+        debugger;
         html = "";
         $.each(data, function (i, item) {
            html=html+ IndidualRow(data[i]);
-            alert(data[i].PageName);
+            
         });
         return html;
     }
+    function makeSortJobs(data) {
+        debugger;
+        html = "";
+        
+        $.each(data, function (i, item) {
+            html = html + makeindidualsortrows(data[i]);
+
+        });
+
+        htmlnew = `<div class="row">${html}</div>`;
+        return htmlnew;
+    }
+
+    function makeindidualsortrows(datasortrow) {
+        debugger;
+        var html = `<div class="col-sm-4 p-3 rounded mt-2 border-right" style="background-color:white">
+                ${makeImagessortrow(datasortrow.ComapnyLogo)}
+                <p><b>${datasortrow.Title}</b></p>
+                <p style="color:#778594">${datasortrow.NumberOfDays} Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
+            </div>`;
+        return html;
+    }
+
+    function makeImagessortrow(imagpath) {
+        if (imagpath == null) {
+            return ` <img src="../Image/NoImageAvailable.png" style="width:100%;height:80px;object-fit:cover" />`;
+        } else {
+            return ` <img src="${imagpath}" style="width:100%;height:80px;object-fit:cover" />`;
+        }
+    }
     function IndidualRow(datarow) {
+        debugger;
         var Html = `<div class="row p-3 rounded mb-2" style="background-color:white">
-                    <div class="col-sm-2">
-                        <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:80px;object-fit:cover" />
-                    </div>
+                    ${ImageSet(datarow.ComapnyLogo)}
                     <div class="col-sm-8">
                         <h5><b>${datarow.Title}</b></h5>
                         <p>${datarow.Description}</p>
@@ -54,14 +134,26 @@
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                             &nbsp; ${datarow.JobTypes}
                         </p>
-                        <p style="color:#778594">
+                        <p style="color:red">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            &nbsp; ${datarow.NumberOfExpire}
+                            &nbsp; ${datarow.NumberOfExpire} Day 
                         </p>
 
                     </div>
                 </div>`;
         return Html;
+    }
+   
+    function ImageSet(imagepath) {
+        if (imagepath != null) {
+            return ` <div class="col-sm-2">
+                <img src="${imagepath}" style="width:100%;height:80px;object-fit:cover" />
+            </div>`;
+        } else {
+            return ` <div class="col-sm-2">
+                <img src="../Image/NoImageAvailable.png" style="width:100%;height:80px;object-fit:cover" />
+            </div>`;
+        }
     }
 </script>
 

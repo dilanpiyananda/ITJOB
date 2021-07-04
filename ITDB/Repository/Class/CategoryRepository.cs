@@ -11,6 +11,40 @@ namespace ITDB.Repository.Class
 {
     public class CategoryRepository: ICategoryRepository
     {
+        /// <summary>
+        /// Get All Category
+        /// </summary>
+        /// <returns></returns>
+        public List<CategoryDom> GetAllCategory()
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                IQueryable found = db.tbl_category;
+
+                if (found != null)
+                    return MakeComDetails(found, db);
+                else
+                    return null;
+
+            }
+        }
+
+        public List<CategoryDom> MakeComDetails(IQueryable found, itjob_mainEntities db)
+        {
+            var result = (from tbl_category uc in found                          
+                          select new CategoryDom
+                          {
+                              Id = uc.id,
+                              Category = uc.category,
+                              AddedBy = uc.added_by,
+                              UpdatedBy = uc.update_by,
+                              AddedDate = uc.added_date,
+                              UpdatedDate = uc.update_date,
+                              IsActive = uc.is_active,
+                          }).ToList();
+
+            return result;
+        }
         //-------------------------------dropdown--------------------
         /// <summary>
         /// Dropdown

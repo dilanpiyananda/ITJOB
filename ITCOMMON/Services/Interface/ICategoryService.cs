@@ -8,6 +8,11 @@ namespace ITCOMMON.Services.Interface
 {
     public interface ICategoryService
     {
+        /// <summary>
+        /// Get All Category
+        /// </summary>
+        /// <returns></returns>
+        List<CategoryDom> GetAllCategory();
         //-------------------------------dropdown--------------------
         /// <summary>
         /// Dropdown

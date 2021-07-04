@@ -9,6 +9,8 @@
     <EntitySet Name="tbl_category" EntityType="itjob_mainModel.tbl_category" />
     <EntitySet Name="tbl_company_has_job" EntityType="itjob_mainModel.tbl_company_has_job" />
     <EntitySet Name="tbl_job_main" EntityType="itjob_mainModel.tbl_job_main" />
+    <EntitySet Name="tbl_tag" EntityType="itjob_mainModel.tbl_tag" />
+    <EntitySet Name="tbl_tag_has_Job" EntityType="itjob_mainModel.tbl_tag_has_Job" />
   </EntityContainer>
   <EntityType Name="tbl_document">
     <Key>
@@ -125,11 +127,36 @@
     <Property Name="job_type_id" Type="Int32" />
     <Property Name="cv_accept_email_id" Type="Int32" Nullable="false" />
     <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="updated_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="added_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="added_by" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="is_active" Type="Boolean" Nullable="false" />
     <Property Name="category_id" Type="Int32" Nullable="false" />
     <Property Name="web_approval" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_tag">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="added_by" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_tag_has_Job">
+    <Key>
+      <PropertyRef Name="jobhastagId" />
+    </Key>
+    <Property Name="jobhastagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jobmainId" Type="Int64" Nullable="false" />
+    <Property Name="tagId" Type="Int64" Nullable="false" />
+    <Property Name="added_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="added_by" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="updated_by" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

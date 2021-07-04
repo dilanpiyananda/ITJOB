@@ -209,6 +209,7 @@
     <Compile Include="Models\ComapnyVM\CompanyViewModel.cs" />
     <Compile Include="Models\CommonPassData.cs" />
     <Compile Include="Models\EmailVM\EmailMM.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JOBVM\JobMM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ITMVC.Models
+@model HomeViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 @Html.Partial("_HomeScript")
@@ -11,11 +13,16 @@
             <br />
             <hr />
             <h5><b>Select Category</b></h5>
-            <label> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">Software</a></label><br />
-            <label> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">Software</a></label>
+            @if (Model.Categories != null)
+            {
+                foreach (var cat in Model.Categories)
+                {
+                    <label onclick="ShowJobswithCategories('@cat.Id')"> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">@cat.Category</a></label><br />
+                }
+            }
             <br />
         </div>
-        <div class="col-sm-6 rounded" style="background-color:#eceff4">
+        <div class="col-sm-7 rounded" style="background-color:#eceff4">
             <div class="container mt-3 mb-3">
                 <div class="row pl-4 pt-4 pr-4" style="background-color:white">
                     <div class="col-sm-6">
@@ -28,10 +35,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <h5><b>CATEGORY</b></h5>
+                            
                             <label for="exampleFormControlInput1">Select Job Category</label>
-                            <select class="form-control form-control-lg" style="border:none;background-color:#eceff4">
+                            @Html.DropDownListFor(d => d.categoryId, new SelectList(Model.CategoryDropDown, "Id", "value"), new { type = "date", @class = "form-control form-control-lg", @style = "border:none;background-color:#eceff4" })
+                            @*<select class="form-control form-control-lg" style="border:none;background-color:#eceff4">
                                 <option>Small select</option>
-                            </select>
+                            </select>*@
                         </div>
                     </div>
                 </div>
@@ -43,47 +52,25 @@
                         <button type="button" class="btn btn-primary btn-lg">FIND JOBS</button>
                     </div>
                     <div class="col-sm-4 text-center mt-3">
-                        <button type="button" class="btn btn-light btn-lg"><i class="fa fa-list" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-light btn-lg"><i class="fa fa-image"></i></button>
+                        <button type="button" class="btn btn-light btn-lg" onclick="ThumbnilChange(true)"><i class="fa fa-list" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-light btn-lg" onclick="ThumbnilChange(false)"><i class="fa fa-image"></i></button>
                     </div>
                 </div>
-                <div id="jobdatalongrow">
+                <div id="jobdatalongrow" style="max-height:600px;overflow-y:scroll;overflow-x:hidden">
 
                 </div>
-                @*<div class="row p-3 rounded mb-2" style="background-color:white">
-                    <div class="col-sm-2">
-                        <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:80px;object-fit:cover" />
-                    </div>
-                    <div class="col-sm-8">
-                        <h5><b>JOB TITLE</b></h5>
-                        <p>(biology) A scientific documentation of a specimen intended to reveal a new species by technically explaining its characteristics  ...</p>
-                        <p style="color:#778594">3 Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p style="color:#778594">
-                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                            &nbsp; Full time
-                        </p>
-                        <p style="color:#778594">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            &nbsp; Part time
-                        </p>
-
-                    </div>
-                </div>*@
-
-                @*<div class="row">
-                    <div class="col-sm-4 p-3 rounded" style="background-color:white">
-                        <img src="~/Image/comapnypage/email-image.jpg" style="width:100%;height:80px;object-fit:cover" />
-                        <p><b>JOB TITLE</b></p>
-                        <p style="color:#778594">3 Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
-                    </div>
-
-                </div>*@
+                <div  id="jobdatasortrow" style="max-height:600px;overflow-y:auto;overflow-x:hidden">
+                </div>
             </div>
         </div>
-        <div class="col-sm-3">
-
+        <div class="col-sm-2">
+            <div class="row">
+                <div class="col-sm-12 text-center border border-info">
+                    <label>Company Add Here</label>
+                    <label>(+94)71 21 25 166</label>
+                </div>
+                
+            </div>
         </div>
     </div>
 </div>
@@ -91,6 +78,6 @@
 <script>
     // A $( document ).ready() block.
     $(document).ready(function () {
-        LoadData();
+        LoadData(false);
     });
 </script>

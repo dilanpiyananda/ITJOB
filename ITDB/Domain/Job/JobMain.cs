@@ -24,11 +24,13 @@ namespace ITDB.Domain.Job
         public string Category { get; set; }
         public int WebApproval { get; set; }
         public Approval WebApprovaltype { get; set; }
+        public string TagName { get; set; }
 
         public JobType JobTypes { get; set; }
         public List<Document> DocumentData { get; set; }
         public List<Document> LogoData { get; set; }
         public List<Document> CompanyLogo { get; set; }
+        public List<Tag> TagsList { get; set; }
         public CompanyDom CompanyDetails { get; set; }
     }
 }

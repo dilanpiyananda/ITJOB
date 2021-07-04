@@ -13,6 +13,8 @@
         <EntityTypeShape EntityType="itjob_mainModel.tbl_category" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="itjob_mainModel.tbl_company_has_job" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="itjob_mainModel.tbl_job_main" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="itjob_mainModel.tbl_tag" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="itjob_mainModel.tbl_tag_has_Job" Width="1.5" PointX="9.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -2,6 +2,7 @@
 using AutoMapper;
 using ITDB.Domain;
 using ITDB.Domain.Job;
+using ITMVC.Models;
 using ITMVC.Models.EmailVM;
 using ITMVC.Models.JOBVM;
 using System;
@@ -22,6 +23,7 @@ namespace ITMVC.App_Start
             {
                 config.CreateMap<AcceptEmail, EmailMM>();
                 config.CreateMap<JobMain, JobMM>();
+                config.CreateMap<CategoryDom, CategoryMM>();
             });
         }
     }
