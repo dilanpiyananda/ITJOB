@@ -10,7 +10,7 @@ namespace ITMVC.Models
     {
         public long categoryId { get; set; }
         public List<CategoryMM> Categories { get; set; }
-
+        public string SerchWord { get; set; }
         public List<NewSelectList> CategoryDropDown { get; set; }
     }
 

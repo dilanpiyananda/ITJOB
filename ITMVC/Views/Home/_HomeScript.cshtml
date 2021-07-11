@@ -22,27 +22,126 @@
                     if (prevcallFunc == "mainfunc") {
                         LoadData(true);
                     }
+                    else if (prevcallFunc == "serchFunc") {
+                        FindJobVacancy(true);
+                    }
+                    else if (prevcallFunc =="serchcategory") {
+                        ShowJobswithCategories(true, Number($("#categoryId").val()));
+                    }
                     
                 }
             }
         })
     });
+    function ShowJobswithCategories(isScroll, categoryId) {
+        debugger;
+        if (!isScroll) {
+            DefaltAddedData("serchcategory");
+        }
+        //$("#emailLoader").css("display", "show");
+        var url = '@Url.Action("CategoryJob", "Home", new { area = "" })';
+        var dataobj = JSON.stringify({ 'skipCount': Number(skipCount), 'categoryId': Number(categoryId)});
+        
+        
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: dataobj,
+            success: function (response) {
+                debugger;
+                //$("#emailLoader").css("display", "none");
+                if (!response) {
+                    callBack = false;
+                } else {
+                    if (response != null) {
+                        //swal("Success !", "You clicked the button!", "success");
+                        //LoadEmailPartial();
+                        if (response.length < 6) {
+                            callBack = false;
+                        }
+                        skipCount = skipCount + 6;
+                        $("#jobdatalongrow").append(MakeJobs(response));
+                        $("#jobdatasortrow").append(makeSortJobs(response));
+                        $("#jobdatasortrow").css("display", "none");
+                    } else {
+                        callBack = false;
+                        //swal(response, "You clicked the button!", "Error");
+                    }
+                }
+                
 
-    
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+    function FindJobVacancy(isScroll) {
+        debugger;
+        if (!isScroll) {
+            DefaltAddedData("serchFunc");
+        }
+        //$("#emailLoader").css("display", "show");
+        var url = '@Url.Action("SerchJobGet", "Home", new { area = "" })';
+        var dataobj = JSON.stringify({ 'skipCount': Number(skipCount), 'categoryId': Number($("#categoryId").val()), 'searchKey': $("#SerchWord").val()});
+        
+        
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: dataobj,
+            success: function (response) {
+                debugger;
+                //$("#emailLoader").css("display", "none");
+                if (!response) {
+                    callBack = false;
+                } else {
+                    if (response != null) {
+                        //swal("Success !", "You clicked the button!", "success");
+                        //LoadEmailPartial();
+                        if (response.length < 6) {
+                            callBack = false;
+                        }
+                        skipCount = skipCount + 6;
+                        $("#jobdatalongrow").append(MakeJobs(response));
+                        $("#jobdatasortrow").append(makeSortJobs(response));
+                        $("#jobdatasortrow").css("display", "none");
+                    } else {
+                        callBack = false;
+                        //swal(response, "You clicked the button!", "Error");
+                    }
+                }
+                
+
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
 
     function DefaltAddedData(functionname) {
         prevcallFunc = functionname;
         skipCount = 0;
         callBack = true;
+        $("#jobdatalongrow").empty();
+        $("#jobdatasortrow").empty();
     }
     function LoadData(isScroll) {
         debugger;
-        //$("#emailLoader").css("display", "show");
-        var url = '@Url.Action("CompanyJob", "Home", new { area = "" })';
-        var dataobj = JSON.stringify({ 'skipCount': Number(skipCount) });
         if (!isScroll) {
             DefaltAddedData("mainfunc");
         }
+        //$("#emailLoader").css("display", "show");
+        var url = '@Url.Action("CompanyJob", "Home", new { area = "" })';
+        var dataobj = JSON.stringify({ 'skipCount': Number(skipCount) });
+       
         
         $.ajax({
             type: "POST",

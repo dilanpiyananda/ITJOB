@@ -39,6 +39,20 @@ namespace ITDB.Repository.Interface
         List<JobMain> GetJobbyCompanyId(long[] jobId);
 
         /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        List<JobMain> GetAllJob(DateTime startTime, long skipCount, string serchKey, long categoryId);
+
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        List<JobMain> GetAllJob(DateTime startTime, long skipCount, long categoryId);
+
+        /// <summary>
         /// Get Job using job id
         /// </summary>
         /// <param name="JobId"></param>

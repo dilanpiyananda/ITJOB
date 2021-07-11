@@ -4,6 +4,7 @@
     ViewBag.Title = "Home Page";
 }
 @Html.Partial("_HomeScript")
+
 <div class="container-fluid mt-5 mb-5">
     <div class="row">
         <div class="col-sm-3 text-left">
@@ -17,7 +18,7 @@
             {
                 foreach (var cat in Model.Categories)
                 {
-                    <label onclick="ShowJobswithCategories('@cat.Id')"> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">@cat.Category</a></label><br />
+                    <label onclick="ShowJobswithCategories(false,'@cat.Id')"> <i class="fa fa-tasks" aria-hidden="true"></i> <a href="#">@cat.Category</a></label><br />
                 }
             }
             <br />
@@ -29,7 +30,8 @@
                         <div class="form-group">
                             <h5><b>WHAT</b></h5>
                             <label for="exampleFormControlInput1">Job name, Company Name, Keyword Search</label>
-                            <input type="email" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="What Need..." style="border:none;background-color:#eceff4">
+                            @Html.TextBoxFor(m=>m.SerchWord,new { @class = "form-control form-control-lg", @placeholder = "What Need...", @style = "border:none;background-color:#eceff4" })
+                            @*<input type="email" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="What Need..." style="border:none;background-color:#eceff4">*@
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -49,7 +51,7 @@
 
                     </div>
                     <div class="col-sm-4 p-3 text-center rounded-bottom" style="background-color:white">
-                        <button type="button" class="btn btn-primary btn-lg">FIND JOBS</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="FindJobVacancy(false)">FIND JOBS</button>
                     </div>
                     <div class="col-sm-4 text-center mt-3">
                         <button type="button" class="btn btn-light btn-lg" onclick="ThumbnilChange(true)"><i class="fa fa-list" aria-hidden="true"></i></button>

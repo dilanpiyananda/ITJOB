@@ -66,5 +66,49 @@ namespace ITMVC.Controllers
                           }).ToList();
             return Json(result);
         }
+
+        public ActionResult SerchJobGet(long skipCount,long categoryId,string searchKey)
+        {
+            var model = _jobPost.GetAllJob(DateTime.Now, skipCount,searchKey,categoryId);
+            if (model == null)
+                return Json(false);
+
+            var result = (from JobMain jo in model
+                          select new
+                          {
+                              JobMainId = jo.JobMainId,
+                              Title = jo.Title,
+                              Description = jo.Description,
+                              CvAcceptEmail = jo.CvAcceptEmail,
+                              NumberOfVacancy = jo.NumberOfVacancy,
+                              JobTypes = ((JobType)jo.JobTypes).ToString(),
+                              ComapnyLogo = jo.CompanyLogo.Count() > 0 ? (jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null,
+                              NumberOfDays = Convert.ToInt32((DateTime.Now - jo.OpenDate).TotalDays),
+                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays)
+                          }).ToList();
+            return Json(result);
+        }
+
+        public ActionResult CategoryJob(long skipCount, long categoryId)
+        {
+            var model = _jobPost.GetAllJob(DateTime.Now, skipCount,categoryId);
+            if (model == null)
+                return Json(false);
+
+            var result = (from JobMain jo in model
+                          select new
+                          {
+                              JobMainId = jo.JobMainId,
+                              Title = jo.Title,
+                              Description = jo.Description,
+                              CvAcceptEmail = jo.CvAcceptEmail,
+                              NumberOfVacancy = jo.NumberOfVacancy,
+                              JobTypes = ((JobType)jo.JobTypes).ToString(),
+                              ComapnyLogo = jo.CompanyLogo.Count() > 0 ? (jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null,
+                              NumberOfDays = Convert.ToInt32((DateTime.Now - jo.OpenDate).TotalDays),
+                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays)
+                          }).ToList();
+            return Json(result);
+        }
     }
 }

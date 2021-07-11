@@ -67,6 +67,7 @@
     <Compile Include="Domain\Enum\JobType.cs" />
     <Compile Include="Domain\Enum\Section.cs" />
     <Compile Include="Domain\Enum\TrustEnum.cs" />
+    <Compile Include="Domain\JobHasTag.cs" />
     <Compile Include="Domain\Job\CompanyHasJob.cs" />
     <Compile Include="Domain\Job\JobMain.cs" />
     <Compile Include="Domain\NewSelectList.cs" />

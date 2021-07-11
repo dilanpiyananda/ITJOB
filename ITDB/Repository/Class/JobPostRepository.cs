@@ -1,4 +1,5 @@
-﻿using ITDB.Domain.Enum;
+﻿using ITDB.Domain;
+using ITDB.Domain.Enum;
 using ITDB.Domain.Job;
 using ITDB.Model.Main_AdoNet;
 using ITDB.Repository.Interface;
@@ -70,7 +71,70 @@ namespace ITDB.Repository.Class
 
             }
         }
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob(DateTime startTime, long skipCount, string serchKey, long categoryId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+                long[] jobIdArray = null;
+                string[] serchList = serchKey.Split(' ');
+                if (serchList == null)
+                    return null;
 
+                var foundSerchkey = (from tbl_tag uc in db.tbl_tag.Where(d => serchList.Contains(d.TagName))
+                                     from pt in db.tbl_tag_has_Job.Where(x => x.tagId == uc.TagId).DefaultIfEmpty()
+                                     select new JobHasTag
+                                     {
+                                         JobId=pt.jobmainId,
+                                         TagId=pt.jobhastagId
+                                     }).ToList();
+
+                if (foundSerchkey != null && foundSerchkey.Count() > 0)
+                {
+                    var distnctArray = foundSerchkey.GroupBy(x => x.JobId)
+                         .Select(g => g.First())
+                         .ToList();
+                    jobIdArray = distnctArray.Select(d => d.JobId).ToArray();
+                }
+                else
+                {
+                    return null;
+                }
+                
+
+                var found = db.tbl_job_main.Where(d => d.web_approval == (int)Approval.approved && d.is_active == true && d.open_date <= startTime && d.close_date >= startTime && d.category_id == categoryId && jobIdArray.Contains(d.id)).OrderBy(d => d.id).Skip(Convert.ToInt32(skipCount)).Take(6).ToList();
+
+                if (found != null && found.Count() > 0)
+                    return MakeComDetails(found.Select(d => d.id).ToArray(), db);
+                else
+                    return null;
+
+            }
+        }
+
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob(DateTime startTime, long skipCount, long categoryId)
+        {
+            using (itjob_mainEntities db = new itjob_mainEntities())
+            {
+
+                var found = db.tbl_job_main.Where(d => d.web_approval == (int)Approval.approved && d.is_active == true && d.open_date <= startTime && d.close_date >= startTime && d.category_id == categoryId).OrderBy(d => d.id).Skip(Convert.ToInt32(skipCount)).Take(6).ToList();
+
+                if (found != null && found.Count() > 0)
+                    return MakeComDetails(found.Select(d => d.id).ToArray(), db);
+                else
+                    return null;
+
+            }
+        }
         /// <summary>
         /// Get Job using job id
         /// </summary>

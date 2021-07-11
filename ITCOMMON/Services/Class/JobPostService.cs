@@ -76,6 +76,51 @@ namespace ITCOMMON.Services.Class
             }
             return jobs;
         }
+
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob(DateTime startTime, long skipCount, string serchKey, long categoryId){
+            var jobs = _jobPostRepo.GetAllJob(startTime, skipCount, serchKey, categoryId);
+            if (jobs == null)
+                return null;
+
+            foreach (var a in jobs)
+            {
+                a.DocumentData = _documentDbService.GetDocument(a.JobMainId);
+                long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
+                a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+                a.CompanyLogo = _documentDbService.GetDocument(companyId);
+                a.TagsList = _tagService.GetTags(a.JobMainId);
+                a.TagName = _tagService.GetTags(a.JobMainId).Count() > 0 ? string.Join(",", _tagService.GetTags(a.JobMainId).Select(d => d.TagName).ToList()) : null;
+            }
+            return jobs;
+        }
+
+        /// <summary>
+        /// Get All Job
+        /// </summary>
+        /// <param name="JobId"></param>
+        /// <returns></returns>
+        public List<JobMain> GetAllJob(DateTime startTime, long skipCount, long categoryId)
+        {
+            var jobs = _jobPostRepo.GetAllJob(startTime, skipCount,categoryId);
+            if (jobs == null)
+                return null;
+
+            foreach (var a in jobs)
+            {
+                a.DocumentData = _documentDbService.GetDocument(a.JobMainId);
+                long companyId = _compnyHasJobService.GetCompanyId(a.JobMainId);
+                a.CompanyDetails = _compnyDataService.GetCompanyDetailsByCompanyId(companyId);
+                a.CompanyLogo = _documentDbService.GetDocument(companyId);
+                a.TagsList = _tagService.GetTags(a.JobMainId);
+                a.TagName = _tagService.GetTags(a.JobMainId).Count() > 0 ? string.Join(",", _tagService.GetTags(a.JobMainId).Select(d => d.TagName).ToList()) : null;
+            }
+            return jobs;
+        }
         /// <summary>
         /// Save job
         /// </summary>
