@@ -41,13 +41,13 @@ namespace ITCOMMON.ServiceOfHelper
             if (section == Section.company)
             {
                 string date = (DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day).ToString();
-                string fileName = Section.company.ToString() + date + "#" + lastfileconcatstring.ToString();
+                string fileName = Section.company.ToString() + date + "_" + lastfileconcatstring.ToString();
                 return fileName;
             }
             else if (section == Section.Job)
             {
                 string date = (DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day).ToString();
-                string fileName = Section.Job.ToString() + date + "#" + lastfileconcatstring.ToString();
+                string fileName = Section.Job.ToString() + date + "_" + lastfileconcatstring.ToString();
                 return fileName;
             }
             else

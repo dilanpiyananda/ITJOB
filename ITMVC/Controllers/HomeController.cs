@@ -62,7 +62,8 @@ namespace ITMVC.Controllers
                               JobTypes = ((JobType)jo.JobTypes).ToString(),
                               ComapnyLogo=jo.CompanyLogo.Count() > 0 ?(jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~","..") : null,
                               NumberOfDays=Convert.ToInt32(( DateTime.Now - jo.OpenDate).TotalDays),
-                              NumberOfExpire =Convert.ToInt32( ( jo.CloseDate-DateTime.Now).TotalDays)
+                              NumberOfExpire =Convert.ToInt32( ( jo.CloseDate-DateTime.Now).TotalDays),
+                              jobImage=jo.DocumentData.Count()>0?(jo.DocumentData.Where(d=>d.ResolutionType== (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", ".."):null
                           }).ToList();
             return Json(result);
         }
@@ -84,7 +85,8 @@ namespace ITMVC.Controllers
                               JobTypes = ((JobType)jo.JobTypes).ToString(),
                               ComapnyLogo = jo.CompanyLogo.Count() > 0 ? (jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null,
                               NumberOfDays = Convert.ToInt32((DateTime.Now - jo.OpenDate).TotalDays),
-                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays)
+                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays),
+                              jobImage = jo.DocumentData.Count() > 0 ? (jo.DocumentData.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null
                           }).ToList();
             return Json(result);
         }
@@ -106,7 +108,33 @@ namespace ITMVC.Controllers
                               JobTypes = ((JobType)jo.JobTypes).ToString(),
                               ComapnyLogo = jo.CompanyLogo.Count() > 0 ? (jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null,
                               NumberOfDays = Convert.ToInt32((DateTime.Now - jo.OpenDate).TotalDays),
-                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays)
+                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays),
+                              jobImage = jo.DocumentData.Count() > 0 ? (jo.DocumentData.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null
+                          }).ToList();
+            return Json(result);
+        }
+
+        public JsonResult GetSingleJob(long jobMainId)
+        {
+            List<JobMain> jobMainList = new List<JobMain>();
+            var model = _jobPost.GetJob(jobMainId);
+            if (model == null)
+                return Json(null);
+
+            jobMainList.Add(model);
+            var result = (from JobMain jo in jobMainList
+                          select new
+                          {
+                              JobMainId = jo.JobMainId,
+                              Title = jo.Title,
+                              Description = jo.Description,
+                              CvAcceptEmail = jo.CvAcceptEmail,
+                              NumberOfVacancy = jo.NumberOfVacancy,
+                              JobTypes = ((JobType)jo.JobTypes).ToString(),
+                              ComapnyLogo = jo.CompanyLogo.Count() > 0 ? (jo.CompanyLogo.Where(d => d.ResolutionType == (int)FileType._Medium).FirstOrDefault().virtualPath).Replace("~", "..") : null,
+                              NumberOfDays = Convert.ToInt32((DateTime.Now - jo.OpenDate).TotalDays),
+                              NumberOfExpire = Convert.ToInt32((jo.CloseDate - DateTime.Now).TotalDays),
+                              jobImage = jo.DocumentData.Count() > 0 ? (jo.DocumentData.Where(d => d.ResolutionType == (int)FileType._Original).FirstOrDefault().virtualPath).Replace("~", "..") : null
                           }).ToList();
             return Json(result);
         }

@@ -2,12 +2,54 @@
 @model HomeViewModel
 @{
     ViewBag.Title = "Home Page";
+    DateTime today = DateTime.Now;
+    DateTime todaymorning = new DateTime(today.Year, today.Month, today.Day, 5, 0, 0);
+    DateTime todayafternoon = new DateTime(today.Year, today.Month, today.Day, 12, 0, 0);
+    DateTime todayevening = new DateTime(today.Year, today.Month, today.Day, 16, 0, 0);
+    DateTime todaynight = new DateTime(today.Year, today.Month, today.Day, 19, 0, 0);
 }
 @Html.Partial("_HomeScript")
 
 <div class="container-fluid mt-5 mb-5">
     <div class="row">
         <div class="col-sm-3 text-left">
+            <h1 style="color:#dcdcdcbd">@DateTime.Now.ToLongTimeString()</h1>
+            @if (today > todaynight)
+            {
+                <h4>
+                    <i class="fa fa-bed" aria-hidden="true" style="color:blue"></i>
+                    GOOD NIGHT
+                </h4>
+            }
+            else if (today > todayevening)
+            {
+                <h4>
+                    <i class="fa fa-coffee" aria-hidden="true" style="color:blue"></i>
+                    GOOD EVINING
+                </h4>
+            }
+            else if (today > todayafternoon)
+            {
+                <h4>
+                    <i class="fa fa-clock-o" aria-hidden="true" style="color:blue"></i>
+                    GOOD EVINING
+                </h4>
+            }
+            else if (today > todaymorning)
+            {
+                <h4>
+                    <i class="fa fa-sun-o" aria-hidden="true" style="color:blue"></i>
+                    GOOD MORNING
+                </h4>
+            }
+            else
+            {
+                <h4>HAVE A NICE DAY</h4>
+            }
+            
+            <label>Your Welcome Our Page</label>
+            
+            <hr />
             <h5><b>JOBS IN</b></h5>
             <p>Main Western Province In Sri Lanka</p>
             <button type="button" class="btn btn-warning"><b>NEED POST JOB</b> </button>
@@ -30,19 +72,19 @@
                         <div class="form-group">
                             <h5><b>WHAT</b></h5>
                             <label for="exampleFormControlInput1">Job name, Company Name, Keyword Search</label>
-                            @Html.TextBoxFor(m=>m.SerchWord,new { @class = "form-control form-control-lg", @placeholder = "What Need...", @style = "border:none;background-color:#eceff4" })
+                            @Html.TextBoxFor(m => m.SerchWord, new { @class = "form-control form-control-lg", @placeholder = "What Need...", @style = "border:none;background-color:#eceff4" })
                             @*<input type="email" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="What Need..." style="border:none;background-color:#eceff4">*@
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <h5><b>CATEGORY</b></h5>
-                            
+
                             <label for="exampleFormControlInput1">Select Job Category</label>
                             @Html.DropDownListFor(d => d.categoryId, new SelectList(Model.CategoryDropDown, "Id", "value"), new { type = "date", @class = "form-control form-control-lg", @style = "border:none;background-color:#eceff4" })
                             @*<select class="form-control form-control-lg" style="border:none;background-color:#eceff4">
-                                <option>Small select</option>
-                            </select>*@
+                        <option>Small select</option>
+                    </select>*@
                         </div>
                     </div>
                 </div>
@@ -61,17 +103,18 @@
                 <div id="jobdatalongrow" style="max-height:600px;overflow-y:scroll;overflow-x:hidden">
 
                 </div>
-                <div  id="jobdatasortrow" style="max-height:600px;overflow-y:auto;overflow-x:hidden">
+                <div id="jobdatasortrow" style="max-height:600px;overflow-y:auto;overflow-x:hidden">
+                </div>
+                <div id="jobSinglerow" style="max-height:600px;overflow-y:auto;overflow-x:hidden">
+                     
                 </div>
             </div>
         </div>
         <div class="col-sm-2">
             <div class="row">
-                <div class="col-sm-12 text-center border border-info">
-                    <label>Company Add Here</label>
-                    <label>(+94)71 21 25 166</label>
-                </div>
-                
+                <div class="col-sm-12">
+                    <img src="~/Image/PromationAD/dilanwebAD-01.png" style="width:100%" />
+                </div>   
             </div>
         </div>
     </div>

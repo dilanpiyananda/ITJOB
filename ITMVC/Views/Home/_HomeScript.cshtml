@@ -162,6 +162,7 @@
                             callBack = false;
                         }
                         skipCount = skipCount + 6;
+                        console.log(response);
                         $("#jobdatalongrow").append(MakeJobs(response));
                         $("#jobdatasortrow").append(makeSortJobs(response));
                         $("#jobdatasortrow").css("display", "none");
@@ -207,7 +208,7 @@
         var html = `<div class="col-sm-4 p-3 rounded mt-2 border-right" style="background-color:white">
                 ${makeImagessortrow(datasortrow.ComapnyLogo)}
                 <p><b>${datasortrow.Title}</b></p>
-                <p style="color:#778594">${datasortrow.NumberOfDays} Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
+                <p style="color:#778594">${datasortrow.NumberOfDays} Days Ago &nbsp;| <a href="#" onclick="ViewDetails(${datasortrow.JobMainId})">VIEW DETAILS</a> </p>
             </div>`;
         return html;
     }
@@ -221,12 +222,13 @@
     }
     function IndidualRow(datarow) {
         debugger;
+
         var Html = `<div class="row p-3 rounded mb-2" style="background-color:white">
                     ${ImageSet(datarow.ComapnyLogo)}
                     <div class="col-sm-8">
                         <h5><b>${datarow.Title}</b></h5>
                         <p>${datarow.Description}</p>
-                        <p style="color:#778594">${datarow.NumberOfDays} Days Ago &nbsp;| <a href="#">VIEW DETAILS</a> </p>
+                        <p style="color:#778594">${datarow.NumberOfDays} Days Ago &nbsp;| <a href="#" onclick='ViewDetails(${datarow.JobMainId})'>VIEW DETAILS</a> </p>
                     </div>
                     <div class="col-sm-2">
                         <p style="color:#778594">
@@ -253,6 +255,71 @@
                 <img src="../Image/NoImageAvailable.png" style="width:100%;height:80px;object-fit:cover" />
             </div>`;
         }
+    }
+
+    function ViewDetails(jobmainId) {
+        var url = '@Url.Action("GetSingleJob", "Home", new { area = "" })';
+        var dataobj = JSON.stringify({ 'jobMainId': Number(jobmainId) }); 
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data: dataobj,
+            success: function (response) {
+                debugger;
+                //$("#emailLoader").css("display", "none");
+                if (!response) {
+                    callBack = false;
+                } else {
+                    if (response != null) {
+                        makeSingleHtml(response)
+                    } else {
+                        //callBack = false;
+                        //swal(response, "You clicked the button!", "Error");
+                    }
+                }
+
+
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+        //${ datarow.JobMainId }, ${ datarow.jobImage }, ${ datarow.Title }, ${ datarow.Description }, ${ datarow.CvAcceptEmail }
+        
+    }
+    function makeSingleHtml(data) {
+        debugger;
+        var html = ` <div class="row text-center">
+                        <div class="col-sm-12">
+                            <h2><b>${data[0].Title}</b>&nbsp; (REF: ${data[0].JobMainId})</h2>
+                            <p>${data[0].Description}</p>
+
+                        </div>
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-success" onclick="BackList()">Back List</button>
+                            <button type="button" class="btn btn-danger">Send Email</button>
+                        <hr />
+                        </div>
+                        <div class="col-sm-12 mt-5">
+                            <img src=${data[0].jobImage} style="width:100%;height:auto;" />
+                        </div>
+                    </div>`;
+        $("#jobSinglerow").html(html);
+        showSingleRow();
+    }
+    function showSingleRow() {
+        $("#jobSinglerow").css('display', 'block');
+        $("#jobdatalongrow").css('display', 'none');
+        $("#jobdatasortrow").css('display', 'none');
+    }
+
+    function BackList() {
+        $("#jobSinglerow").css('display', 'none');
+        $("#jobdatalongrow").css('display', 'block');
+        $("#jobdatasortrow").css('display', 'none');
     }
 </script>
 
