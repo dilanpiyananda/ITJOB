@@ -11,10 +11,11 @@ using ITDB.Domain.Job;
 using ITDB.Domain.Enum;
 using ITMVC.Models;
 using AutoMapper;
+using ITMVC.Base;
 
 namespace ITMVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SystemBaseController
     {
         private readonly IDocumentDbService _dbDoc = new DocumentDbService();
         private readonly IJobPostService _jobPost = new JobPostService();

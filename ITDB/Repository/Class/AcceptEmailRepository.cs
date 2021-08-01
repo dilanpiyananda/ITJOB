@@ -20,7 +20,7 @@ namespace ITDB.Repository.Class
         {
             using (itjob_mainEntities db = new itjob_mainEntities())
             {
-                IQueryable found = db.tbl_company_has_accept_email;
+                IQueryable found = db.tbl_company_has_accept_email.Where(d=>d.company_id == CompanyId);
 
                 if (found != null)
                     return MakeComDetails(found, db);

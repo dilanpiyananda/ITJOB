@@ -3,6 +3,7 @@
 
 <script>
     function savedata() {
+        
         $("#mainCompanyLoader").css("display", "block");
         var object = createObject();
         var url = "http://localhost:52410" + '@Url.Action("CompanyMainDetialsSave", "Company", new { area = "Company" })';

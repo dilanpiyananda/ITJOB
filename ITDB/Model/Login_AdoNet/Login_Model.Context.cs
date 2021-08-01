@@ -30,5 +30,6 @@ namespace ITDB.Model.Login_AdoNet
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<tbl_user_has_role> tbl_user_has_role { get; set; }
     }
 }

@@ -292,6 +292,8 @@
     }
     function makeSingleHtml(data) {
         debugger;
+        var hreflink = "mailto:" + data[0].CvAcceptEmail;
+        hreflink = "https://mail.google.com/mail/?view=cm&source=mailto&to='" + data[0].CvAcceptEmail + "'";
         var html = ` <div class="row text-center">
                         <div class="col-sm-12">
                             <h2><b>${data[0].Title}</b>&nbsp; (REF: ${data[0].JobMainId})</h2>
@@ -300,7 +302,7 @@
                         </div>
                         <div class="col-sm-12">
                             <button type="button" class="btn btn-success" onclick="BackList()">Back List</button>
-                            <button type="button" class="btn btn-danger">Send Email</button>
+                            <a type="button" target="_blank"  href=${hreflink} class="btn btn-danger">Send Email</a>
                         <hr />
                         </div>
                         <div class="col-sm-12 mt-5">

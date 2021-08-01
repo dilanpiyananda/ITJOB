@@ -9,12 +9,17 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ITMVC.Models;
+using ITCOMMON.Services.Interface;
+using System.Web.ApplicationServices;
+using ITCOMMON.Services.Class;
+using ITDB.Domain.Enum;
 
 namespace ITMVC.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IRoleMenualService _roleService = new RoleMenualService();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -79,7 +84,11 @@ namespace ITMVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    TempData["userId"] = "";
+                    TempData["email"] = model.Email;
+                    TempData["returnUrl"] = returnUrl;
+                    return RedirectToAction(nameof(RedirectPageComapareUser));
+                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -155,15 +164,20 @@ namespace ITMVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
+                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    string error = RolesAssign(user.Id, RoleDetails.Company.ToString());
+                    TempData["userId"] = user.Id;
+                    TempData["email"] = "";
+                    TempData["returnUrl"] = "";
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    return RedirectToAction(nameof(RedirectPageComapareUser));
 
-                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -171,7 +185,51 @@ namespace ITMVC.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        private string RolesAssign(string userId,string roleId)
+        {
+            string error = _roleService.SaveRole(userId, roleId);
+            return error;
+        }
 
+        public ActionResult RedirectPageComapareUser()
+        {
+            //Get userId and Email
+            string userId = TempData["userId"].ToString();
+            string email = TempData["email"].ToString();
+            string returnUrl = TempData["returnUrl"] !=null? TempData["returnUrl"].ToString():"";
+
+
+            string roleName = null;
+            if(userId != null && userId !="")
+            {
+                roleName = _roleService.GetRolebyUserId(userId);
+            }
+            else
+            {
+                roleName = _roleService.GetRolebyEmail(email);
+            }
+
+            if (returnUrl !="")
+            {
+                return RedirectToLocal(returnUrl);
+            }
+            else if(roleName == RoleDetails.Admin.ToString())
+            {
+                return RedirectToAction("Index", "Home",new {area="Admin" });
+            }
+            else if (roleName == RoleDetails.Company.ToString())
+            {
+                return RedirectToAction("Index", "Company", new { area = "Company" });
+            }
+            else if(roleName == RoleDetails.User.ToString())
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
