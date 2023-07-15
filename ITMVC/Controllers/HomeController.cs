@@ -21,8 +21,14 @@ namespace ITMVC.Controllers
         private readonly IJobPostService _jobPost = new JobPostService();
         private readonly ICategoryService _categorySerice = new CategoryService();
 
+        public ActionResult testView()
+        {
+     
+            return View();
+        }
         public ActionResult Index()
         {
+            return RedirectToAction(nameof(testView));
             string userUuid = HttpContext.User.Identity.GetUserId();
             HomeViewModel model = new HomeViewModel()
             {
